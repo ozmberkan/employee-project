@@ -42,24 +42,8 @@ const App = () => {
     });
   };
 
-  const nameHandler = (e) => {
-    setEmployee({ ...employee, name: e.target.value });
-  };
-
-  const surNameHandler = (e) => {
-    setEmployee({ ...employee, surname: e.target.value });
-  };
-
-  const ageHandler = (e) => {
-    setEmployee({ ...employee, age: e.target.value });
-  };
-
-  const insuranceHandler = (e) => {
-    setEmployee({ ...employee, insuranceType: e.target.value });
-  };
-
-  const jobHandler = (e) => {
-    setEmployee({ ...employee, job: e.target.value });
+  const handleChange = (e) => {
+    setEmployee({ ...employee, [e.target.name]: e.target.value });
   };
 
   return (
@@ -79,7 +63,8 @@ const App = () => {
                 placeholder="Enter name"
                 value={employee.name}
                 className="border p-2 rounded"
-                onChange={nameHandler}
+                onChange={handleChange}
+                name="name"
               />
             </div>
             <div className="space-y-2 flex flex-col">
@@ -89,7 +74,8 @@ const App = () => {
                 placeholder="Enter surname"
                 value={employee.surname}
                 className="border p-2 rounded"
-                onChange={surNameHandler}
+                onChange={handleChange}
+                name="surname"
               />
             </div>
           </div>
@@ -102,7 +88,8 @@ const App = () => {
                 type="number"
                 placeholder="Enter age"
                 className="border p-2 rounded"
-                onChange={ageHandler}
+                onChange={handleChange}
+                name="age"
               />
             </div>
             <div className="space-y-2 flex flex-col">
@@ -112,7 +99,8 @@ const App = () => {
                 placeholder="Enter insurance type"
                 className="border p-2 rounded"
                 value={employee.insuranceType}
-                onChange={insuranceHandler}
+                onChange={handleChange}
+                name="insuranceType"
               >
                 <option value="" disabled>
                   Seçiniz
@@ -130,7 +118,8 @@ const App = () => {
               placeholder="Enter job"
               className="border p-2 rounded"
               value={employee.job}
-              onChange={jobHandler}
+              onChange={handleChange}
+              name="job"
             />
           </div>
           <button
