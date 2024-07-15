@@ -1,1 +1,47 @@
-export const Data = [];
+export const Data = [
+  {
+    id: 1,
+    name: "Berkan",
+    surname: "Özmen",
+    bdate: "25.04.2001",
+    itype: "4A",
+    job: "Yazılımcı",
+    dlicense: "Evet",
+  },
+  {
+    id: 2,
+    name: "Mehmet",
+    surname: "Yıldırım",
+    bdate: "02.12.2005",
+    itype: "4B",
+    job: "Bakkal",
+    dlicense: "Hayır",
+  },
+  {
+    id: 3,
+    name: "Ali",
+    surname: "Veli",
+    bdate: "15.06.1996",
+    itype: "4C",
+    job: "Memur",
+    dlicense: "Evet",
+  },
+  {
+    id: 4,
+    name: "Buse",
+    surname: "Zaman",
+    bdate: "15.06.1996",
+    itype: "4C",
+    job: "Memur",
+    dlicense: "Evet",
+  },
+  {
+    id: 5,
+    name: "Hakan",
+    surname: "Akyılan",
+    bdate: "15.06.1996",
+    itype: "4A",
+    job: "Memur",
+    dlicense: "Evet",
+  },
+];

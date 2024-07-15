@@ -1,38 +1,58 @@
 import React, { useState } from "react";
-import { FiHome } from "react-icons/fi";
+import { GoHomeFill } from "react-icons/go";
+
 import { BsPersonLinesFill } from "react-icons/bs";
 import { MdPersonAdd } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { IoMdSettings } from "react-icons/io";
+import toast, { Toaster } from "react-hot-toast";
 
 const Navbar = () => {
   return (
     <div
-      className={`border-r flex flex-col items-center gap-y-5 py-6 h-screen min-w-[100px] bg-white transition-all duration-500`}
+      className={`border-r flex flex-col justify-between items-center gap-y-5 py-6 h-screen min-w-[100px] bg-white transition-all duration-500`}
     >
-      <Link
-        to="/"
-        className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
-      >
-        <span className=" text-2xl">
-          <FiHome />
-        </span>
-      </Link>
-      <Link
-        to="/add"
-        className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
-      >
-        <span className=" text-2xl">
-          <MdPersonAdd />
-        </span>
-      </Link>
-      <Link
-        to="/list"
-        className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
-      >
-        <span className="  text-2xl">
-          <BsPersonLinesFill />
-        </span>
-      </Link>
+      <div className="flex flex-col gap-y-5">
+        <Link
+          to="/"
+          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
+        >
+          <span className=" text-2xl">
+            <GoHomeFill />
+          </span>
+        </Link>
+        <Link
+          to="/add"
+          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
+        >
+          <span className=" text-2xl">
+            <MdPersonAdd />
+          </span>
+        </Link>
+        <Link
+          to="/list"
+          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
+        >
+          <span className="  text-2xl">
+            <BsPersonLinesFill />
+          </span>
+        </Link>
+      </div>
+      <div>
+        <Toaster position="top-center" reverseOrder={false} />
+        <button
+          onClick={() =>
+            toast("Henüz 'settings butonu' eklenmedi!", {
+              icon: "⚙️",
+            })
+          }
+          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
+        >
+          <span className="  text-2xl">
+            <IoMdSettings />
+          </span>
+        </button>
+      </div>
     </div>
   );
 };

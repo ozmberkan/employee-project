@@ -7,6 +7,8 @@ import List from "./pages/List";
 import Navbar from "./components/Navbar";
 
 const App = () => {
+  const [data, setData] = useState(Data);
+
   return (
     <Router>
       <div className="flex items-start justify-start gap-x-5 font-manrope">
@@ -14,7 +16,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/add" element={<Add />} />
-          <Route path="/list" element={<List />} />
+          <Route path="/list" element={<List data={data} />} />
         </Routes>
       </div>
     </Router>
