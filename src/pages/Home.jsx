@@ -14,14 +14,14 @@ const Home = (props) => {
   const count4C = data.filter((type) => type.itype === "4C").length;
 
   return (
-    <div className="p-7 w-full flex flex-col gap-y-12 px-12">
+    <div className="p-7 w-full flex flex-col gap-y-12 px-12 ">
       <h1 className="text-4xl font-bold text-zinc-800 flex justify-between items-center px-1">
         Hoş geldin!
         <span className="text-[14px] font-normal text-zinc-400">
-          Employee Database v1.0
+          Employee Database v1.1
         </span>
       </h1>
-      <div className="w-full h-[300px] grid grid-cols-3  gap-10">
+      <div className="w-full grid grid-cols-3 gap-10">
         <div className="rounded-xl bg-white border p-6 flex flex-col gap-y-3 ring-2 ring-offset-4  row-span-4 ring-sky-800-500/70 border-zinc-400/50">
           <h1 className="text-2xl font-semibold flex gap-x-2 items-center">
             <HiUsers />
@@ -49,8 +49,9 @@ const Home = (props) => {
             Güncellemeler
           </h1>
           <span className="font-medium text-zinc-500">
-            Henüz güncelleme bulunmamaktadır.
+            Localstorage Eklendi
           </span>
+          <span className="font-medium text-zinc-500">Validasyon Eklendi</span>
         </div>
         <div className="w-full  bg-cover rounded-xl border ring-2 ring-offset-4 gap-y-3 ring-green-500/70 p-6 flex flex-col row-span-12 col-span-2 ">
           <h1 className="text-2xl font-semibold flex gap-x-2 items-center">

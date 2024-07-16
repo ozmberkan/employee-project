@@ -10,7 +10,7 @@ import toast, { Toaster } from "react-hot-toast";
 const Navbar = () => {
   return (
     <div
-      className={`border-r flex flex-col justify-between items-center gap-y-5 py-6 h-screen min-w-[100px] bg-white transition-all duration-500`}
+      className={`border-r flex h-screen flex-col justify-between items-center gap-y-5 py-6  min-w-[100px] bg-white transition-all duration-500`}
     >
       <div className="flex flex-col gap-y-5">
         <Link
