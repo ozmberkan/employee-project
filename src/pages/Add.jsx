@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const Add = (props) => {
   const { setData, data } = props;
@@ -13,18 +14,39 @@ const Add = (props) => {
     dlicense: "",
   });
 
+  useEffect(() => {
+    const storedPersonnel = JSON.parse(localStorage.getItem("employee")) || [];
+    if (storedPersonnel.length > 0) {
+      setData(storedPersonnel);
+    }
+  }, [setData]);
+
   const addNewEmployee = (e) => {
     e.preventDefault();
-    setData([...data, { ...newEmployee, id: nanoid() }]);
-    setNewEmployee({
-      id: "",
-      name: "",
-      surname: "",
-      bdate: "",
-      itype: "",
-      job: "",
-      dlicense: "",
-    });
+    if (
+      newEmployee.name === "" ||
+      newEmployee.surname === "" ||
+      newEmployee.bdate === "" ||
+      newEmployee.itype === "" ||
+      newEmployee.job === "" ||
+      newEmployee.dlicense === ""
+    ) {
+      toast.error("Tüm alanları doldurmak zorundasınız...");
+    } else {
+      const updatedUser = [...data, { ...newEmployee, id: nanoid() }];
+      setData(updatedUser);
+      localStorage.setItem("employee", JSON.stringify(updatedUser));
+      setNewEmployee({
+        id: "",
+        name: "",
+        surname: "",
+        bdate: "",
+        itype: "",
+        job: "",
+        dlicense: "",
+      });
+      toast.success("Personel başarıyla veritabanına eklendi.");
+    }
   };
 
   const handleChange = (e) => {
@@ -34,6 +56,7 @@ const Add = (props) => {
 
   return (
     <div className=" p-7 w-full flex flex-col gap-y-12 px-12">
+      <Toaster position="top center" />
       <h1 className="text-4xl font-bold text-zinc-800 flex justify-start  flex-col items-start px-1 gap-y-2">
         Personel Kayıt
         <span className="text-base font-normal text-zinc-400">

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HiUsers } from "react-icons/hi2";
 import { MdWork, MdOutlineUpdate } from "react-icons/md";
 import { BiSolidTime } from "react-icons/bi";
 import { Data } from "../data/Data";
 
 const Home = (props) => {
-  const { data } = props;
+  const { data, setData } = props;
   const reversedData = [...data].reverse();
   const totalEmployee = data.length;
 

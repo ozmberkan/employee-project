@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { IoIosSearch } from "react-icons/io";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 
@@ -9,6 +10,16 @@ const List = (props) => {
 
   const deleteEmpFunc = (id) => {
     setData(data.filter((data) => data.id != id));
+    toast.success(
+      <div>
+        <span className="font-bold">{id.slice(0, 12)}</span> sicil numarasına
+        sahip olan personel başarıyla silindi.
+      </div>
+    );
+    localStorage.setItem(
+      "employee",
+      JSON.stringify(data.filter((data) => data.id !== id))
+    );
   };
 
   const filteredData = data.filter((data) =>
@@ -19,6 +30,7 @@ const List = (props) => {
 
   return (
     <div className="p-7 w-full flex flex-col gap-y-12 px-12">
+      <Toaster position="top center" />
       <h1 className="text-4xl font-bold text-zinc-800 flex justify-start  flex-col items-start px-1 gap-y-2">
         Personel Listesi
         <span className="text-base font-normal text-zinc-400">

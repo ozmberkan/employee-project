@@ -42,7 +42,7 @@ const Navbar = () => {
         <Toaster position="top-center" reverseOrder={false} />
         <button
           onClick={() =>
-            toast("Henüz 'settings' eklenmedi!", {
+            toast("Henüz ayarlar eklenmedi!", {
               icon: "⚙️",
             })
           }
