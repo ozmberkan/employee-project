@@ -1,6 +1,37 @@
-import React from "react";
+import { nanoid } from "nanoid";
+import React, { useState } from "react";
 
-const Add = () => {
+const Add = (props) => {
+  const { setData, data } = props;
+  const [newEmployee, setNewEmployee] = useState({
+    id: "",
+    name: "",
+    surname: "",
+    bdate: "",
+    itype: "",
+    job: "",
+    dlicense: "",
+  });
+
+  const addNewEmployee = (e) => {
+    e.preventDefault();
+    setData([...data, { ...newEmployee, id: nanoid() }]);
+    setNewEmployee({
+      id: "",
+      name: "",
+      surname: "",
+      bdate: "",
+      itype: "",
+      job: "",
+      dlicense: "",
+    });
+  };
+
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+    setNewEmployee({ ...newEmployee, [name]: value });
+  };
+
   return (
     <div className=" p-7 w-full flex flex-col gap-y-12 px-12">
       <h1 className="text-4xl font-bold text-zinc-800 flex justify-start  flex-col items-start px-1 gap-y-2">
@@ -10,13 +41,19 @@ const Add = () => {
         </span>
       </h1>
 
-      <form className="w-2/3 border bg-white grid grid-cols-2 gap-10 p-12 rounded">
+      <form
+        className="w-2/3 border bg-white grid grid-cols-2 gap-10 p-12 rounded"
+        onSubmit={addNewEmployee}
+      >
         <div className="flex flex-col gap-y-2">
           <label className="text-lg font-semibold">İsim</label>
           <input
             type="text"
             placeholder="İsim Giriniz..."
-            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] "
+            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3]"
+            name="name"
+            onChange={handleChange}
+            value={newEmployee.name}
           />
         </div>
         <div className="flex flex-col gap-y-2">
@@ -25,6 +62,9 @@ const Add = () => {
             type="text"
             placeholder="Soy isim Giriniz..."
             className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] "
+            name="surname"
+            onChange={handleChange}
+            value={newEmployee.surname}
           />
         </div>
         <div className="flex flex-col gap-y-2">
@@ -33,6 +73,9 @@ const Add = () => {
             type="date"
             placeholder="Yaş Giriniz..."
             className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] "
+            name="bdate"
+            onChange={handleChange}
+            value={newEmployee.bdate}
           />
         </div>
         <div className="flex flex-col gap-y-2">
@@ -40,6 +83,9 @@ const Add = () => {
           <select
             type="text"
             className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] "
+            name="itype"
+            onChange={handleChange}
+            value={newEmployee.itype}
           >
             <option value="">Sigorta Türü Seçiniz...</option>
             <option value="4A">4A</option>
@@ -52,28 +98,31 @@ const Add = () => {
           <select
             type="text"
             className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] "
+            name="job"
+            onChange={handleChange}
+            value={newEmployee.job}
           >
             <option value="">Meslek Seçiniz...</option>
-            <option value="doktor">Doktor</option>
-            <option value="muhendis">Mühendis</option>
-            <option value="ogretmen">Öğretmen</option>
-            <option value="avukat">Avukat</option>
-            <option value="polis">Polis</option>
-            <option value="asker">Asker</option>
-            <option value="mimar">Mimar</option>
-            <option value="eczaci">Eczacı</option>
-            <option value="hemsire">Hemşire</option>
-            <option value="diş_hekimi">Diş Hekimi</option>
-            <option value="pilot">Pilot</option>
-            <option value="itfaiyeci">İtfaiyeci</option>
-            <option value="gazeteci">Gazeteci</option>
-            <option value="yazilimci">Yazılımcı</option>
-            <option value="şoför">Şoför</option>
-            <option value="çiftçi">Çiftçi</option>
-            <option value="kuaför">Kuaför</option>
-            <option value="tezgahtar">Tezgahtar</option>
-            <option value="resepsiyonist">Resepsiyonist</option>
-            <option value="sanatci">Sanatçı</option>
+            <option value="Doktor">Doktor</option>
+            <option value="Mühendis">Mühendis</option>
+            <option value="Öğretmen">Öğretmen</option>
+            <option value="Avukat">Avukat</option>
+            <option value="Polis">Polis</option>
+            <option value="Asker">Asker</option>
+            <option value="Mimar">Mimar</option>
+            <option value="Eczacı">Eczacı</option>
+            <option value="Hemşire">Hemşire</option>
+            <option value="Diş Hekimi">Diş Hekimi</option>
+            <option value="Pilot">Pilot</option>
+            <option value="İtfaiyeci">İtfaiyeci</option>
+            <option value="Gazeteci">Gazeteci</option>
+            <option value="Yazılımcı">Yazılımcı</option>
+            <option value="Şoför">Şoför</option>
+            <option value="Çiftçi">Çiftçi</option>
+            <option value="Kuaför">Kuaför</option>
+            <option value="Tezgahtar">Tezgahtar</option>
+            <option value="Resepsiyonist">Resepsiyonist</option>
+            <option value="Sanatçı">Sanatçı</option>
           </select>
         </div>
         <div className="flex flex-col gap-y-2">
@@ -81,13 +130,16 @@ const Add = () => {
           <select
             type="text"
             className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] "
+            name="dlicense"
+            onChange={handleChange}
+            value={newEmployee.dlicense}
           >
             <option value="">Sürücü Belgesi Seçiniz...</option>
             <option value="Var">Var</option>
             <option value="Yok">Yok</option>
           </select>
         </div>
-        <button className="row-span-2  w-[100px] bg-[#424242] text-white h-[50px] rounded">
+        <button className="row-span-2  w-[100px] bg-[#202020] text-white h-[50px] rounded">
           Kaydet
         </button>
       </form>

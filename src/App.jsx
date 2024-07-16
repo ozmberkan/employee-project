@@ -14,9 +14,12 @@ const App = () => {
       <div className="flex items-start justify-start gap-x-5 font-manrope">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/add" element={<Add />} />
-          <Route path="/list" element={<List data={data} />} />
+          <Route path="/" element={<Home data={data} />} />
+          <Route path="/add" element={<Add setData={setData} data={data} />} />
+          <Route
+            path="/list"
+            element={<List data={data} setData={setData} />}
+          />
         </Routes>
       </div>
     </Router>

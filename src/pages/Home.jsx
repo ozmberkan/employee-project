@@ -4,11 +4,11 @@ import { MdWork, MdOutlineUpdate } from "react-icons/md";
 import { BiSolidTime } from "react-icons/bi";
 import { Data } from "../data/Data";
 
-const Home = () => {
-  const [data, setData] = useState(Data);
-
+const Home = (props) => {
+  const { data } = props;
   const reversedData = [...data].reverse();
   const totalEmployee = data.length;
+
   const count4A = data.filter((type) => type.itype === "4A").length;
   const count4B = data.filter((type) => type.itype === "4B").length;
   const count4C = data.filter((type) => type.itype === "4C").length;
@@ -60,35 +60,35 @@ const Home = () => {
           <div className="w-full flex flex-col justify-between items-start gap-y-2">
             <div className="w-full border-b grid grid-cols-7 h-12 mt-6 hover:bg-zinc-100 px-5">
               <span className="w-full  flex justify-start items-center font-bold ">
-                ID
+                Sicil No
               </span>
               <span className="w-full  flex justify-start items-center font-bold ">
-                Name
+                Ad
               </span>
               <span className="w-full  flex justify-start items-center font-bold ">
-                Surname
+                Soyad
               </span>
               <span className="w-full  flex justify-start items-center font-bold ">
-                BDate
+                Doğum Tarihi
               </span>
               <span className="w-full  flex justify-start items-center font-bold ">
-                IType
+                Sigorta Tipi
               </span>
               <span className="w-full  flex justify-start items-center font-bold ">
-                Job
+                Meslek
               </span>
               <span className="w-full  flex justify-start items-center font-bold ">
-                DLicense
+                Sürücü Belgesi
               </span>
             </div>
             {reversedData.length > 0 ? (
-              reversedData.slice(0, 5).map((user) => (
+              reversedData.map((user) => (
                 <div
                   key={user.id}
                   className="w-full border-b grid grid-cols-7 h-16  hover:bg-zinc-100 px-5 mt-3"
                 >
                   <span className="w-full  flex justify-start items-center">
-                    {user.id}
+                    {user.id.slice(0, 12)}
                   </span>
                   <span className="w-full  flex justify-start items-center">
                     {user.name}
@@ -106,7 +106,7 @@ const Home = () => {
                     {user.job}
                   </span>
                   <span className="w-full  flex justify-start items-center">
-                    {user.dlicense}
+                    {user.dlicense ? "Evet" : "Hayır"}
                   </span>
                 </div>
               ))

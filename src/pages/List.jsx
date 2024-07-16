@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 
 const List = (props) => {
-  const { data } = props;
+  const { data, setData } = props;
+
+  const [search, setSearch] = useState("");
+
+  const deleteEmpFunc = (id) => {
+    setData(data.filter((data) => data.id != id));
+  };
+
+  const filteredData = data.filter((data) =>
+    `${data.name} ${data.surname} ${data.id} ${data.job} ${data.itype}`
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  );
 
   return (
     <div className="p-7 w-full flex flex-col gap-y-12 px-12">
@@ -23,45 +35,46 @@ const List = (props) => {
             <input
               type="text"
               placeholder="Personel Ara..."
+              onChange={(e) => setSearch(e.target.value)}
               className="pl-12 py-2 border rounded bg-[#F4F4F5] outline-none placeholder:text-zinc-500 w-[600px] focus:ring-1 focus:ring-offset-2 ring-zinc-500 transition-all duration-500"
             />
           </div>
         </div>
         <div className="w-full border-b grid grid-cols-8 h-16 mt-6 hover:bg-zinc-100 px-5">
           <span className="w-full  flex justify-start items-center font-bold text-xl">
-            ID
+            Sicil No
           </span>
           <span className="w-full  flex justify-start items-center font-bold text-xl">
-            Name
+            Ad
           </span>
           <span className="w-full  flex justify-start items-center font-bold text-xl">
-            Surname
+            Soyad
           </span>
           <span className="w-full  flex justify-start items-center font-bold text-xl">
-            BDate
+            Doğum Tarihi
           </span>
           <span className="w-full  flex justify-start items-center font-bold text-xl">
-            IType
+            Sigorta Tipi
           </span>
           <span className="w-full  flex justify-start items-center font-bold text-xl">
-            Job
+            Meslek
           </span>
           <span className="w-full  flex justify-start items-center font-bold text-xl">
-            DLicense
+            Sürücü Belgesi
           </span>
           <span className="w-20  flex justify-center items-center font-bold text-xl">
             Sil
           </span>
         </div>
 
-        {data.length > 0 ? (
-          data.map((user) => (
+        {filteredData.length > 0 ? (
+          filteredData.map((user) => (
             <div
               key={user.id}
               className="w-full border-b grid grid-cols-8 h-16  hover:bg-zinc-100 px-5"
             >
               <span className="w-full  flex justify-start items-center">
-                {user.id}
+                {user.id.slice(0, 12)}
               </span>
               <span className="w-full  flex justify-start items-center">
                 {user.name}
@@ -79,9 +92,12 @@ const List = (props) => {
                 {user.job}
               </span>
               <span className="w-full  flex justify-start items-center">
-                {user.dlicense}
+                {user.dlicense ? "Evet" : "Hayır"}
               </span>
-              <button className="w-20 flex justify-center items-center  hover:text-red-500 text-xl rounded transition-colors duration-300 ">
+              <button
+                onClick={() => deleteEmpFunc(user.id)}
+                className="w-20 flex justify-center items-center  hover:text-red-500 text-xl rounded transition-colors duration-300"
+              >
                 <MdOutlineDeleteOutline size={30} />
               </button>
             </div>
