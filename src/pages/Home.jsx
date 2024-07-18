@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import { HiUsers } from "react-icons/hi2";
 import { MdWork, MdOutlineUpdate } from "react-icons/md";
 import { BiSolidTime } from "react-icons/bi";
-import { Data } from "../data/Data";
+
+import { auth } from "../firebase";
+import { signOut } from "firebase/auth";
 
 const Home = (props) => {
-  const { data, setData } = props;
+  const { data, setData, user } = props;
+
   const reversedData = [...data].reverse();
   const totalEmployee = data.length;
 
@@ -16,9 +19,9 @@ const Home = (props) => {
   return (
     <div className="p-7 w-full flex flex-col gap-y-12 px-12 ">
       <h1 className="text-4xl font-bold text-zinc-800 flex justify-between items-center px-1">
-        Hoş geldin!
+        Hoş geldin - {user.email}
         <span className="text-[14px] font-normal text-zinc-400">
-          Employee Database v1.1
+          Employee Database v1.2
         </span>
       </h1>
       <div className="w-full grid grid-cols-3 gap-10">
@@ -49,9 +52,11 @@ const Home = (props) => {
             Güncellemeler
           </h1>
           <span className="font-medium text-zinc-500">
-            Localstorage Eklendi
+            Login / Register eklendi
           </span>
-          <span className="font-medium text-zinc-500">Validasyon Eklendi</span>
+          <span className="font-medium text-zinc-500">
+            Login Validasyon Eklendi
+          </span>
         </div>
         <div className="w-full  bg-cover rounded-xl border ring-2 ring-offset-4 gap-y-3 ring-green-500/70 p-6 flex flex-col row-span-12 col-span-2 ">
           <h1 className="text-2xl font-semibold flex gap-x-2 items-center">

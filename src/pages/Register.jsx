@@ -1,39 +1,37 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
-const Login = () => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
-  const loginHandle = async (e) => {
+  const registerHandle = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate("/");
-    } catch {
-      alert("Bilgileri lütfen doldurunuz...");
+      await createUserWithEmailAndPassword(auth, email, password);
+      console.log("Kayıt Başarılı");
+    } catch (error) {
+      console.log("Hata Mevcut");
     }
   };
 
   return (
     <div className="p-7 w-full flex flex-col gap-y-12 px-12 ">
       <h1 className="text-4xl font-bold text-zinc-800 flex justify-between items-center px-1">
-        Giriş Yap!
+        Kayıt Ol!
         <span className="text-[14px] font-normal text-zinc-400">
           Employee Database v1.2
         </span>
       </h1>
       <form
-        className="w-2/3 border bg-white grid grid-cols-1 gap-10 p-12 rounded"
-        onSubmit={loginHandle}
+        className="w-2/3 border bg-white grid grid-cols-2 gap-10 p-12 rounded"
+        onSubmit={registerHandle}
       >
         <div className="flex flex-col gap-y-2">
           <label className="text-lg font-semibold">E-Posta</label>
           <input
-            type="text"
+            type="email"
             placeholder="E-posta Giriniz..."
             className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3]"
             value={email}
@@ -51,20 +49,12 @@ const Login = () => {
           />
         </div>
 
-        <div className="flex justify-start items-center gap-x-5">
-          <button className="row-span-2  w-[100px] bg-[#202020] text-white h-[50px] rounded">
-            Giriş Yap
-          </button>
-          <Link
-            to="/register"
-            className="w-[100px] bg-[#202020] text-white h-[50px] rounded flex justify-center items-center"
-          >
-            Kayıt Ol
-          </Link>
-        </div>
+        <button className="row-span-2  w-[100px] bg-[#202020] text-white h-[50px] rounded">
+          Kayıt Ol
+        </button>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Register;
