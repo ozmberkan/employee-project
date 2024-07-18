@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Add from "./pages/Add";
 import List from "./pages/List";
 import Navbar from "./components/Navbar";
+import Login from "./pages/Login";
 
 const App = () => {
   const [data, setData] = useState(Data);
@@ -19,12 +20,16 @@ const App = () => {
       <div className="flex items-start justify-start gap-x-5 font-manrope">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home data={data} setData={setData} />} />
+          <Route
+            path="/home"
+            element={<Home data={data} setData={setData} />}
+          />
           <Route path="/add" element={<Add setData={setData} data={data} />} />
           <Route
             path="/list"
             element={<List data={data} setData={setData} />}
           />
+          <Route path="/" element={<Login />} />
         </Routes>
       </div>
     </Router>
