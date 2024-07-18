@@ -52,7 +52,6 @@ const Navbar = () => {
 
         <div
           onClick={handleLogOut}
-          to="/list"
           className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
         >
           <span className="  text-2xl">
