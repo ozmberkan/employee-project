@@ -14,13 +14,6 @@ const Add = (props) => {
     dlicense: "",
   });
 
-  useEffect(() => {
-    const storedPersonnel = JSON.parse(localStorage.getItem("employee")) || [];
-    if (storedPersonnel.length > 0) {
-      setData(storedPersonnel);
-    }
-  }, [setData]);
-
   const addNewEmployee = (e) => {
     e.preventDefault();
     if (
@@ -55,9 +48,9 @@ const Add = (props) => {
   };
 
   return (
-    <div className=" p-7 w-full flex flex-col gap-y-12 px-12">
+    <div className="p-7 w-full flex flex-col gap-y-12 px-12">
       <Toaster position="top center" />
-      <h1 className="text-4xl font-bold text-zinc-800 flex justify-start  flex-col items-start px-1 gap-y-2">
+      <h1 className="text-4xl font-bold text-zinc-800 flex justify-start flex-col items-start px-1 gap-y-2">
         Personel Kayıt
         <span className="text-base font-normal text-zinc-400">
           Lütfen bilgileri eksiksiz doldurunuz.
@@ -84,7 +77,7 @@ const Add = (props) => {
           <input
             type="text"
             placeholder="Soy isim Giriniz..."
-            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] "
+            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3]"
             name="surname"
             onChange={handleChange}
             value={newEmployee.surname}
@@ -95,7 +88,7 @@ const Add = (props) => {
           <input
             type="date"
             placeholder="Yaş Giriniz..."
-            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] "
+            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3]"
             name="bdate"
             onChange={handleChange}
             value={newEmployee.bdate}
@@ -105,7 +98,7 @@ const Add = (props) => {
           <label className="text-lg font-semibold">Sigorta Türü</label>
           <select
             type="text"
-            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] "
+            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3]"
             name="itype"
             onChange={handleChange}
             value={newEmployee.itype}
@@ -120,7 +113,7 @@ const Add = (props) => {
           <label className="text-lg font-semibold">Meslek</label>
           <select
             type="text"
-            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] "
+            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3]"
             name="job"
             onChange={handleChange}
             value={newEmployee.job}
@@ -152,7 +145,7 @@ const Add = (props) => {
           <label className="text-lg font-semibold">Sürücü Ehliyeti</label>
           <select
             type="text"
-            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] "
+            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3]"
             name="dlicense"
             onChange={handleChange}
             value={newEmployee.dlicense}
@@ -162,7 +155,7 @@ const Add = (props) => {
             <option value="Yok">Yok</option>
           </select>
         </div>
-        <button className="row-span-2  w-[100px] bg-[#202020] text-white h-[50px] rounded">
+        <button className="row-span-2 w-[100px] bg-[#202020] text-white h-[50px] rounded">
           Kaydet
         </button>
       </form>

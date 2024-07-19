@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { HiUsers } from "react-icons/hi2";
 import { MdWork, MdOutlineUpdate } from "react-icons/md";
 import { BiSolidTime } from "react-icons/bi";
 
-import { auth } from "../firebase";
-import { signOut } from "firebase/auth";
 
 const Home = (props) => {
   const { data, setData, user } = props;
