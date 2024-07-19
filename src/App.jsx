@@ -40,6 +40,7 @@ const App = () => {
   const Layout = () => {
     return (
       <FlexContainer>
+        <Toaster />
         <Navbar />
         <Outlet />
       </FlexContainer>

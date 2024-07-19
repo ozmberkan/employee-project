@@ -7,15 +7,12 @@ import { toast, Toaster } from "react-hot-toast";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
-  const loginHandle =  (e) => {
+  const loginHandle = async (e) => {
     e.preventDefault();
     try {
-      toast.success("Giriş Başarılı, Yönlendiriliyorsunuz...");
-      setTimeout(async () => {
-        await signInWithEmailAndPassword(auth, email, password);
-      }, 2000);
+      toast.success("Giriş Başarılı");
+      await signInWithEmailAndPassword(auth, email, password);
     } catch {
       toast.error("Bilgileri lütfen doldurunuz...");
     }
@@ -61,9 +58,9 @@ const Login = () => {
           </button>
           <Link
             to="/register"
-            className="w-[100px] bg-[#202020] text-white h-[50px] rounded flex justify-center items-center"
+            className="w-[250px] whitespace-nowrap bg-[#609d3a] text-white h-[50px] rounded flex justify-center items-center"
           >
-            Kayıt Ol
+            Hesabın yok mu? Kayıt ol
           </Link>
         </div>
       </form>

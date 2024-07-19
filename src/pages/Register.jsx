@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { Link } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -10,14 +12,14 @@ const Register = () => {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      console.log("Kayıt Başarılı");
     } catch (error) {
-      console.log("Hata Mevcut");
+      toast.error("Hata Mevcut");
     }
   };
 
   return (
     <div className="p-7 w-full flex flex-col gap-y-12 px-12 ">
+      <Toaster />
       <h1 className="text-4xl font-bold text-zinc-800 flex justify-between items-center px-1">
         Kayıt Ol!
         <span className="text-[14px] font-normal text-zinc-400">
@@ -49,9 +51,17 @@ const Register = () => {
           />
         </div>
 
-        <button className="row-span-2  w-[100px] bg-[#202020] text-white h-[50px] rounded">
-          Kayıt Ol
-        </button>
+        <div className="flex justify-start items-center gap-x-5">
+          <button className="row-span-2  w-[100px] bg-[#202020] text-white h-[50px] rounded">
+            Kayıt Ol
+          </button>
+          <Link
+            to="/login"
+            className="w-[250px] whitespace-nowrap bg-[#609d3a] text-white h-[50px] rounded flex justify-center items-center"
+          >
+            Hesabın var mı? Giriş yap
+          </Link>
+        </div>
       </form>
     </div>
   );
