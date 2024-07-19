@@ -24,7 +24,7 @@ const Login = () => {
       <h1 className="text-4xl font-bold text-zinc-800 flex justify-between items-center px-1">
         Giriş Yap!
         <span className="text-[14px] font-normal text-zinc-400">
-          Employee Database v1.2
+          Employee Database v1.3
         </span>
       </h1>
       <form

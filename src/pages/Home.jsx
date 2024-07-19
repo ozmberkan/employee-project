@@ -19,7 +19,7 @@ const Home = (props) => {
       <h1 className="text-4xl font-bold text-zinc-800 dark:text-white flex justify-between items-center px-1">
         Hoş geldin
         <span className="text-[14px] font-normal text-zinc-400">
-          Employee Database v1.2
+          Employee Database v1.3
         </span>
       </h1>
       <div className="w-full grid grid-cols-3 gap-10 dark:text-white">
@@ -50,7 +50,7 @@ const Home = (props) => {
             Güncellemeler
           </h1>
           {Updates.map((update, i) => (
-            <span key={i}>{`• ${update.title}`}</span>
+            <span className="text-zinc-500" key={i}>{`• ${update.title}`}</span>
           ))}
         </div>
         <div className="w-full  bg-cover rounded-xl border dark:bg-[#1c1c1c] ring-2 ring-offset-4 gap-y-3 ring-green-500/70  dark:ring-offset-0  dark:ring-offset-transparent p-6 flex flex-col row-span-12 col-span-2 ">

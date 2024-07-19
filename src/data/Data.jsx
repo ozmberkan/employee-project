@@ -2,9 +2,9 @@ export const Data = [];
 
 export const Updates = [
   {
-    title: "Validasyonlar Final sürüme kadar kapalı.",
+    title: "Login / Register Final sürüme kadar kapalı.",
   },
   {
-    title: "List componentine renk değişikliği eklendi ve yapı düzenlendi.",
+    title: "Dark Mod Eklendi.",
   },
 ];
