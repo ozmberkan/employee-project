@@ -2,6 +2,7 @@ import React from "react";
 import { HiUsers } from "react-icons/hi2";
 import { MdWork, MdOutlineUpdate } from "react-icons/md";
 import { BiSolidTime } from "react-icons/bi";
+import { Updates } from "../data/Data";
 
 const Home = (props) => {
   const { data, setData, user } = props;
@@ -48,12 +49,9 @@ const Home = (props) => {
             <MdOutlineUpdate />
             Güncellemeler
           </h1>
-          <span className="font-medium text-zinc-500">
-            Login / Register eklendi
-          </span>
-          <span className="font-medium text-zinc-500">
-            Login Validasyon Eklendi
-          </span>
+          {Updates.map((update, i) => (
+            <span key={i}>{`• ${update.title}`}</span>
+          ))}
         </div>
         <div className="w-full  bg-cover rounded-xl border ring-2 ring-offset-4 gap-y-3 ring-green-500/70 p-6 flex flex-col row-span-12 col-span-2 ">
           <h1 className="text-2xl font-semibold flex gap-x-2 items-center">
