@@ -53,7 +53,7 @@ const Home = (props) => {
             <span className="text-zinc-500" key={i}>{`• ${update.title}`}</span>
           ))}
         </div>
-        <div className="w-full  bg-cover rounded-xl border dark:bg-[#1c1c1c] ring-2 ring-offset-4 gap-y-3 ring-green-500/70  dark:ring-offset-0  dark:ring-offset-transparent p-6 flex flex-col row-span-12 col-span-2 ">
+        <div className="w-full  bg-cover rounded-xl border dark:bg-[#1c1c1c] ring-2 ring-offset-4 gap-y-3 ring-green-500/70  dark:ring-offset-0 dark:ring-offset-transparent  p-6 flex flex-col row-span-12 col-span-2 ">
           <h1 className="text-2xl font-semibold flex gap-x-2 items-center">
             <BiSolidTime />
             En son eklenen 5 personel

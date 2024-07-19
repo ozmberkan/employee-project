@@ -27,7 +27,7 @@ const Navbar = () => {
       <div className="flex flex-col gap-y-5">
         <Link
           to="/"
-          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 dark:hover:bg-[#0e0e0e] dark:hover:text-[#565555] rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
+          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 dark:hover:bg-[#0e0e0e] dark:hover:text-[#fff] rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
         >
           <span className=" text-2xl">
             <GoHomeFill />
@@ -35,7 +35,7 @@ const Navbar = () => {
         </Link>
         <Link
           to="/add"
-          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 dark:hover:bg-[#0e0e0e] dark:hover:text-[#565555] rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
+          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 dark:hover:bg-[#0e0e0e] dark:hover:text-[#fff] rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
         >
           <span className=" text-2xl">
             <MdPersonAdd />
@@ -43,7 +43,7 @@ const Navbar = () => {
         </Link>
         <Link
           to="/list"
-          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 dark:hover:bg-[#0e0e0e] dark:hover:text-[#565555] rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
+          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 dark:hover:bg-[#0e0e0e] dark:hover:text-[#fff] rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
         >
           <span className="  text-2xl">
             <BsPersonLinesFill />
@@ -63,7 +63,7 @@ const Navbar = () => {
         <Toaster position="top-center" reverseOrder={false} />
         <Link
           to="/settings"
-          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 dark:hover:bg-[#0e0e0e] dark:hover:text-[#565555] rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
+          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 dark:hover:bg-[#0e0e0e] dark:hover:text-[#fff] rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
         >
           <span className="  text-2xl">
             <IoMdSettings />
