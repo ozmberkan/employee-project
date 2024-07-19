@@ -29,14 +29,14 @@ const List = (props) => {
   );
 
   return (
-    <div className="p-7 w-full flex flex-col gap-y-12 px-12">
-      <h1 className="text-4xl font-bold text-zinc-800 flex justify-start  flex-col items-start px-1 gap-y-2">
+    <div className="p-7 w-full flex flex-col gap-y-12 px-12 h-screen dark:bg-[#000000] dark:text-white">
+      <h1 className="text-4xl font-bold text-zinc-800 flex justify-start  flex-col items-start dark:text-white px-1 gap-y-2">
         Personel Listesi
-        <span className="text-base font-normal text-zinc-400">
+        <span className="text-base font-normal text-zinc-400 ">
           Lütfen bilgileri KVKK gereği dikkatli kullanınız, paylaşmayınız.
         </span>
       </h1>
-      <div className="w-full border px-4 py-5">
+      <div className="w-full  px-4 py-5 rounded-md  dark:bg-[#1c1c1c] border dark:border-[#303030]">
         <div className="flex justify-between items-center">
           <h1 className="font-bold text-2xl">Personel Listesi</h1>
           <div className="relative">
@@ -47,11 +47,11 @@ const List = (props) => {
               type="text"
               placeholder="Personel Ara..."
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-12 py-2 border rounded bg-[#F4F4F5] outline-none placeholder:text-zinc-500 w-[600px] focus:ring-1 focus:ring-offset-2 ring-zinc-500 transition-all duration-500"
+              className="pl-12 py-2 border rounded bg-[#F4F4F5]  outline-none placeholder:text-zinc-500 w-[600px] focus:ring-1 focus:ring-offset-2 ring-zinc-500 transition-all duration-500 dark:border-[#303030] dark:bg-[#272727] dark:placeholder:text-white dark:focus:border-[#303030] dark:focus:ring-black focus:ring-offset-zinc-700"
             />
           </div>
         </div>
-        <div className="w-full border-b grid grid-cols-8 h-16 mt-6  px-5 bg-gray-100">
+        <div className="w-full border-b grid grid-cols-8 h-16 mt-6  px-5 bg-gray-100 dark:bg-[#282828]">
           <span className="w-full  flex justify-start items-center font-bold text-xl">
             Sicil No
           </span>
@@ -83,7 +83,7 @@ const List = (props) => {
             filteredData.map((user) => (
               <div
                 key={user.id}
-                className="w-full  grid grid-cols-8 h-16  hover:bg-zinc-100 px-5"
+                className="w-full  grid grid-cols-8 h-16  hover:bg-zinc-100 dark:hover:bg-[#131212] px-5"
               >
                 <span className="w-full  flex justify-start items-center">
                   {user.id.slice(0, 12)}

@@ -15,15 +15,15 @@ const Home = (props) => {
   const count4C = data.filter((type) => type.itype === "4C").length;
 
   return (
-    <div className="p-7 w-full flex flex-col gap-y-12 px-12 dark:bg-[#141414] h-screen ">
+    <div className="p-7 w-full flex flex-col gap-y-12 px-12 dark:bg-[#000000] h-screen ">
       <h1 className="text-4xl font-bold text-zinc-800 dark:text-white flex justify-between items-center px-1">
         Hoş geldin
         <span className="text-[14px] font-normal text-zinc-400">
           Employee Database v1.2
         </span>
       </h1>
-      <div className="w-full grid grid-cols-3 gap-10">
-        <div className="rounded-xl bg-white dark:bg-[#303030] border p-6 flex flex-col gap-y-3 ring-2 ring-offset-4  row-span-4 ring-sky-800-500/70 border-zinc-400/50">
+      <div className="w-full grid grid-cols-3 gap-10 dark:text-white">
+        <div className="rounded-xl bg-white dark:bg-[#1c1c1c]  border p-6 flex flex-col gap-y-3 ring-2 ring-offset-4 dark:ring-offset-0  dark:ring-offset-transparent  row-span-4 ring-sky-800-500/70 border-zinc-400/50">
           <h1 className="text-2xl font-semibold flex gap-x-2 items-center">
             <HiUsers />
             Toplam Personel Sayısı
@@ -33,7 +33,7 @@ const Home = (props) => {
             bulunmaktadır.
           </span>
         </div>
-        <div className="rounded-xl bg-white dark:bg-[#303030] border p-6 flex flex-col gap-y-2 ring-2 ring-offset-4  row-span-4 ring-violet-500/70 border-zinc-400/50">
+        <div className="rounded-xl bg-white dark:bg-[#1c1c1c] border p-6 flex flex-col gap-y-2 ring-2 ring-offset-4  dark:ring-offset-0  dark:ring-offset-transparent  row-span-4 ring-violet-500/70 border-zinc-400/50">
           <h1 className="text-2xl font-semibold flex gap-x-2 items-center">
             <MdWork />
             Personel Sigorta Tipi Sayıları
@@ -44,7 +44,7 @@ const Home = (props) => {
             <span className="font-medium text-zinc-500">4C:{count4C}</span>
           </div>
         </div>
-        <div className="rounded-xl bg-white border p-6 flex flex-col gap-y-2 ring-2 ring-offset-4  row-span-4 ring-orange-500/70 border-zinc-400/50">
+        <div className="rounded-xl bg-white border dark:bg-[#1c1c1c] p-6 flex flex-col gap-y-2 ring-2 ring-offset-4  dark:ring-offset-0  dark:ring-offset-transparent  row-span-4 ring-orange-500/70 border-zinc-400/50">
           <h1 className="text-2xl font-semibold flex items-center gap-x-2">
             <MdOutlineUpdate />
             Güncellemeler
@@ -53,13 +53,13 @@ const Home = (props) => {
             <span key={i}>{`• ${update.title}`}</span>
           ))}
         </div>
-        <div className="w-full  bg-cover rounded-xl border ring-2 ring-offset-4 gap-y-3 ring-green-500/70 p-6 flex flex-col row-span-12 col-span-2 ">
+        <div className="w-full  bg-cover rounded-xl border dark:bg-[#1c1c1c] ring-2 ring-offset-4 gap-y-3 ring-green-500/70  dark:ring-offset-0  dark:ring-offset-transparent p-6 flex flex-col row-span-12 col-span-2 ">
           <h1 className="text-2xl font-semibold flex gap-x-2 items-center">
             <BiSolidTime />
             En son eklenen 5 personel
           </h1>
           <div className="w-full flex flex-col justify-between items-start gap-y-2">
-            <div className="w-full border-b grid grid-cols-7 h-12 mt-6 hover:bg-zinc-100 px-5">
+            <div className="w-full border-b grid grid-cols-7 h-12 mt-6 bg-zinc-100 dark:bg-[#282828]  px-5">
               <span className="w-full  flex justify-start items-center font-bold ">
                 Sicil No
               </span>
@@ -86,7 +86,7 @@ const Home = (props) => {
               reversedData.map((user) => (
                 <div
                   key={user.id}
-                  className="w-full border-b grid grid-cols-7 h-16  hover:bg-zinc-100 px-5 mt-3"
+                  className="w-full border-b grid grid-cols-7 h-16  dark:hover:bg-[#131212] hover:bg-zinc-100 px-5 mt-3"
                 >
                   <span className="w-full  flex justify-start items-center">
                     {user.id.slice(0, 12)}

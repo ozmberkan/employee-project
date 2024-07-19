@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`border-r flex h-screen flex-col justify-between items-center gap-y-5 py-6  min-w-[100px] bg-white dark:bg-black/90 dark:border-[#303030] transition-all duration-500`}
+      className={`border-r flex h-screen flex-col justify-between items-center gap-y-5 py-6  min-w-[100px] bg-white dark:bg-[#131313] dark:border-[#272727] transition-all duration-500`}
     >
       <div className="flex flex-col gap-y-5">
         <Link

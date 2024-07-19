@@ -22,12 +22,12 @@ const Settings = () => {
   };
 
   return (
-    <div className="p-7 flex flex-col  gap-y-12 px-12 dark:bg-[#141414] dark:text-white h-screen w-full  transition-all duration-500">
+    <div className="p-7 flex flex-col  gap-y-12 px-12 dark:bg-[#000000] dark:text-white h-screen w-full  transition-all duration-500">
       <h1 className="text-4xl dark:text-white font-bold text-zinc-800 flex justify-between items-center px-1">
         Ayarlar
       </h1>
       <div className="flex flex-col gap-y-5">
-        <div className="rounded-md w-[200px]  transition-all duration-500 bg-white dark:bg-[#303030] border p-6 inline-flex border-zinc-400/50">
+        <div className="rounded-md w-[200px]  transition-all duration-500 bg-white dark:bg-[#1c1c1c] border dark:border-[#303030] p-6 inline-flex border-zinc-400/50">
           <label class="inline-flex items-center cursor-pointer">
             <input
               type="checkbox"

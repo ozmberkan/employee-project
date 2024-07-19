@@ -48,8 +48,8 @@ const Add = (props) => {
   };
 
   return (
-    <div className="p-7 w-full flex flex-col gap-y-12 px-12">
-      <h1 className="text-4xl font-bold text-zinc-800 flex justify-start flex-col items-start px-1 gap-y-2">
+    <div className="p-7 w-full flex h-screen flex-col gap-y-12 px-12 dark:bg-[#000000]">
+      <h1 className="text-4xl font-bold text-zinc-800 dark:text-white flex justify-start flex-col items-start px-1 gap-y-2">
         Personel Kayıt
         <span className="text-base font-normal text-zinc-400">
           Lütfen bilgileri eksiksiz doldurunuz.
@@ -57,7 +57,7 @@ const Add = (props) => {
       </h1>
 
       <form
-        className="w-2/3 border bg-white grid grid-cols-2 gap-10 p-12 rounded"
+        className="w-2/3 border bg-white grid grid-cols-2 gap-10 p-12 rounded dark:bg-[#1c1c1c] dark:text-white  dark:placeholder:text-zinc-700 dark:border-[#303030]"
         onSubmit={addNewEmployee}
       >
         <div className="flex flex-col gap-y-2">
@@ -65,7 +65,8 @@ const Add = (props) => {
           <input
             type="text"
             placeholder="İsim Giriniz..."
-            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3]"
+            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 focus:ring-[#a3a3a3] 
+            dark:border-[#303030] dark:bg-[#272727] dark:placeholder:text-white dark:focus:border-[#303030] dark:focus:ring-black focus:ring-offset-zinc-700"
             name="name"
             onChange={handleChange}
             value={newEmployee.name}
@@ -76,7 +77,7 @@ const Add = (props) => {
           <input
             type="text"
             placeholder="Soy isim Giriniz..."
-            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3]"
+            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] dark:border-[#303030] dark:bg-[#272727] dark:placeholder:text-white  dark:focus:border-[#303030] dark:focus:ring-black focus:ring-offset-zinc-700"
             name="surname"
             onChange={handleChange}
             value={newEmployee.surname}
@@ -87,7 +88,8 @@ const Add = (props) => {
           <input
             type="date"
             placeholder="Yaş Giriniz..."
-            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3]"
+            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] dark:border-[#303030] dark:bg-[#272727] dark:focus:border-[#303030] dark:focus:ring-black focus:ring-offset-zinc-700 
+            dark:placeholder:text-white "
             name="bdate"
             onChange={handleChange}
             value={newEmployee.bdate}
@@ -97,7 +99,7 @@ const Add = (props) => {
           <label className="text-lg font-semibold">Sigorta Türü</label>
           <select
             type="text"
-            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3]"
+            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] dark:border-[#303030] dark:bg-[#272727] dark:placeholder:text-white dark:focus:border-[#303030] dark:focus:ring-black focus:ring-offset-zinc-700"
             name="itype"
             onChange={handleChange}
             value={newEmployee.itype}
@@ -112,7 +114,7 @@ const Add = (props) => {
           <label className="text-lg font-semibold">Meslek</label>
           <select
             type="text"
-            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3]"
+            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] dark:border-[#303030] dark:bg-[#272727] dark:placeholder:text-white  dark:focus:border-[#303030] dark:focus:ring-black focus:ring-offset-zinc-700"
             name="job"
             onChange={handleChange}
             value={newEmployee.job}
@@ -144,7 +146,7 @@ const Add = (props) => {
           <label className="text-lg font-semibold">Sürücü Ehliyeti</label>
           <select
             type="text"
-            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3]"
+            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] dark:border-[#303030] dark:bg-[#272727] dark:placeholder:text-white dark:focus:border-[#303030]"
             name="dlicense"
             onChange={handleChange}
             value={newEmployee.dlicense}
@@ -154,7 +156,7 @@ const Add = (props) => {
             <option value="Yok">Yok</option>
           </select>
         </div>
-        <button className="row-span-2 w-[100px] bg-[#202020] text-white h-[50px] rounded">
+        <button className="row-span-2 w-[100px] bg-[#202020] dark:bg-[#000] text-white h-[50px] rounded">
           Kaydet
         </button>
       </form>
