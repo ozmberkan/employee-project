@@ -15,6 +15,7 @@ import Login from "./pages/Login";
 import { auth } from "./firebase";
 import Register from "./pages/Register";
 import { Toaster } from "react-hot-toast";
+import Settings from "./pages/Settings";
 
 const App = () => {
   const [data, setData] = useState(Data);
@@ -102,7 +103,11 @@ const App = () => {
         },
         {
           path: "/list",
-          element: <List data={data} setData={setData} t />,
+          element: <List data={data} setData={setData} />,
+        },
+        {
+          path: "/settings",
+          element: <Settings />,
         },
       ],
     },

@@ -22,12 +22,12 @@ const Navbar = () => {
 
   return (
     <div
-      className={`border-r flex h-screen flex-col justify-between items-center gap-y-5 py-6  min-w-[100px] bg-white transition-all duration-500`}
+      className={`border-r flex h-screen flex-col justify-between items-center gap-y-5 py-6  min-w-[100px] bg-white dark:bg-black/90 dark:border-[#303030] transition-all duration-500`}
     >
       <div className="flex flex-col gap-y-5">
         <Link
           to="/"
-          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
+          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 dark:hover:bg-[#0e0e0e] dark:hover:text-[#565555] rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
         >
           <span className=" text-2xl">
             <GoHomeFill />
@@ -35,7 +35,7 @@ const Navbar = () => {
         </Link>
         <Link
           to="/add"
-          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
+          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 dark:hover:bg-[#0e0e0e] dark:hover:text-[#565555] rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
         >
           <span className=" text-2xl">
             <MdPersonAdd />
@@ -43,36 +43,32 @@ const Navbar = () => {
         </Link>
         <Link
           to="/list"
-          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
+          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 dark:hover:bg-[#0e0e0e] dark:hover:text-[#565555] rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
         >
           <span className="  text-2xl">
             <BsPersonLinesFill />
           </span>
         </Link>
 
-        <div
+        {/* <div
           onClick={handleLogOut}
           className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
         >
           <span className="  text-2xl">
             <GoSignOut />
           </span>
-        </div>
+        </div> */}
       </div>
       <div>
         <Toaster position="top-center" reverseOrder={false} />
-        <button
-          onClick={() =>
-            toast("Henüz ayarlar eklenmedi!", {
-              icon: "⚙️",
-            })
-          }
-          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
+        <Link
+          to="/settings"
+          className={`text-zinc-400 flex gap-x-2  p-3 hover:bg-zinc-200/50 dark:hover:bg-[#0e0e0e] dark:hover:text-[#565555] rounded-md transition-all duration-1000 cursor-pointer hover:text-[#141414]`}
         >
           <span className="  text-2xl">
             <IoMdSettings />
           </span>
-        </button>
+        </Link>
       </div>
     </div>
   );
