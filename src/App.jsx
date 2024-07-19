@@ -60,11 +60,19 @@ const App = () => {
         },
         {
           path: "/add",
-          element: <Add data={data} setData={setData} />,
+          element: user ? (
+            <Add data={data} setData={setData} />
+          ) : (
+            <Navigate to="/login" />
+          ),
         },
         {
           path: "/list",
-          element: <List data={data} setData={setData} />,
+          element: user ? (
+            <List data={data} setData={setData} />
+          ) : (
+            <Navigate to="/login" />
+          ),
         },
       ],
     },
