@@ -40,12 +40,52 @@ const App = () => {
   const Layout = () => {
     return (
       <FlexContainer>
-        <Toaster />
         <Navbar />
         <Outlet />
       </FlexContainer>
     );
   };
+
+  // const router = createBrowserRouter([
+  //   {
+  //     path: "/",
+  //     element: <Layout />,
+  //     children: [
+  //       {
+  //         path: "/",
+  //         element: user ? (
+  //           <Home user={user} data={data} setData={setData} />
+  //         ) : (
+  //           <Navigate to="/login" />
+  //         ),
+  //       },
+  //       {
+  //         path: "/add",
+  //         element: user ? (
+  //           <Add data={data} setData={setData} />
+  //         ) : (
+  //           <Navigate to="/login" />
+  //         ),
+  //       },
+  //       {
+  //         path: "/list",
+  //         element: user ? (
+  //           <List data={data} setData={setData} />
+  //         ) : (
+  //           <Navigate to="/login" />
+  //         ),
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     path: "/login",
+  //     element: user ? <Navigate to="/" /> : <Login />,
+  //   },
+  //   {
+  //     path: "/register",
+  //     element: user ? <Navigate to="/" /> : <Register />,
+  //   },
+  // ]);
 
   const router = createBrowserRouter([
     {
@@ -54,37 +94,25 @@ const App = () => {
       children: [
         {
           path: "/",
-          element: user ? (
-            <Home user={user} data={data} setData={setData} />
-          ) : (
-            <Navigate to="/login" />
-          ),
+          element: <Home data={data} setData={setData} user={user} />,
         },
         {
           path: "/add",
-          element: user ? (
-            <Add data={data} setData={setData} />
-          ) : (
-            <Navigate to="/login" />
-          ),
+          element: <Add data={data} setData={setData} />,
         },
         {
           path: "/list",
-          element: user ? (
-            <List data={data} setData={setData} />
-          ) : (
-            <Navigate to="/login" />
-          ),
+          element: <List data={data} setData={setData} t />,
         },
       ],
     },
     {
       path: "/login",
-      element: user ? <Navigate to="/" /> : <Login />,
+      element: <Login />,
     },
     {
       path: "/register",
-      element: user ? <Navigate to="/" /> : <Register />,
+      element: <Register />,
     },
   ]);
 

@@ -30,7 +30,6 @@ const List = (props) => {
 
   return (
     <div className="p-7 w-full flex flex-col gap-y-12 px-12">
-      <Toaster position="top center" />
       <h1 className="text-4xl font-bold text-zinc-800 flex justify-start  flex-col items-start px-1 gap-y-2">
         Personel Listesi
         <span className="text-base font-normal text-zinc-400">
@@ -52,7 +51,7 @@ const List = (props) => {
             />
           </div>
         </div>
-        <div className="w-full border-b grid grid-cols-8 h-16 mt-6 hover:bg-zinc-100 px-5">
+        <div className="w-full border-b grid grid-cols-8 h-16 mt-6  px-5 bg-gray-100">
           <span className="w-full  flex justify-start items-center font-bold text-xl">
             Sicil No
           </span>
@@ -79,46 +78,48 @@ const List = (props) => {
           </span>
         </div>
 
-        {filteredData.length > 0 ? (
-          filteredData.map((user) => (
-            <div
-              key={user.id}
-              className="w-full border-b grid grid-cols-8 h-16  hover:bg-zinc-100 px-5"
-            >
-              <span className="w-full  flex justify-start items-center">
-                {user.id.slice(0, 12)}
-              </span>
-              <span className="w-full  flex justify-start items-center">
-                {user.name}
-              </span>
-              <span className="w-full  flex justify-start items-center">
-                {user.surname}
-              </span>
-              <span className="w-full  flex justify-start items-center">
-                {user.bdate}
-              </span>
-              <span className="w-full  flex justify-start items-center">
-                {user.itype}
-              </span>
-              <span className="w-full  flex justify-start items-center">
-                {user.job}
-              </span>
-              <span className="w-full  flex justify-start items-center">
-                {user.dlicense ? "Evet" : "Hayır"}
-              </span>
-              <button
-                onClick={() => deleteEmpFunc(user.id)}
-                className="w-20 flex justify-center items-center  hover:text-red-500 text-xl rounded transition-colors duration-300"
+        <div className="divide-y">
+          {filteredData.length > 0 ? (
+            filteredData.map((user) => (
+              <div
+                key={user.id}
+                className="w-full  grid grid-cols-8 h-16  hover:bg-zinc-100 px-5"
               >
-                <MdOutlineDeleteOutline size={30} />
-              </button>
-            </div>
-          ))
-        ) : (
-          <span className="text-lg px-4 text-zinc-500 w-full  grid mt-5 ">
-            Verilerimizde herhangi bir personel bulunmamaktadır.
-          </span>
-        )}
+                <span className="w-full  flex justify-start items-center">
+                  {user.id.slice(0, 12)}
+                </span>
+                <span className="w-full  flex justify-start items-center">
+                  {user.name}
+                </span>
+                <span className="w-full  flex justify-start items-center">
+                  {user.surname}
+                </span>
+                <span className="w-full  flex justify-start items-center">
+                  {user.bdate}
+                </span>
+                <span className="w-full  flex justify-start items-center">
+                  {user.itype}
+                </span>
+                <span className="w-full  flex justify-start items-center">
+                  {user.job}
+                </span>
+                <span className="w-full  flex justify-start items-center">
+                  {user.dlicense ? "Evet" : "Hayır"}
+                </span>
+                <button
+                  onClick={() => deleteEmpFunc(user.id)}
+                  className="w-20 flex justify-center items-center  hover:text-red-500 text-xl rounded transition-colors duration-300"
+                >
+                  <MdOutlineDeleteOutline size={30} />
+                </button>
+              </div>
+            ))
+          ) : (
+            <span className="text-lg px-4 text-zinc-500 w-full  grid mt-5 ">
+              Verilerimizde herhangi bir personel bulunmamaktadır.
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );

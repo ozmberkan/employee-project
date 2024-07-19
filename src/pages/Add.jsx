@@ -49,7 +49,6 @@ const Add = (props) => {
 
   return (
     <div className="p-7 w-full flex flex-col gap-y-12 px-12">
-      <Toaster position="top center" />
       <h1 className="text-4xl font-bold text-zinc-800 flex justify-start flex-col items-start px-1 gap-y-2">
         Personel Kayıt
         <span className="text-base font-normal text-zinc-400">

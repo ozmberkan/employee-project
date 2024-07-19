@@ -3,7 +3,6 @@ import { HiUsers } from "react-icons/hi2";
 import { MdWork, MdOutlineUpdate } from "react-icons/md";
 import { BiSolidTime } from "react-icons/bi";
 
-
 const Home = (props) => {
   const { data, setData, user } = props;
 
@@ -17,7 +16,7 @@ const Home = (props) => {
   return (
     <div className="p-7 w-full flex flex-col gap-y-12 px-12 ">
       <h1 className="text-4xl font-bold text-zinc-800 flex justify-between items-center px-1">
-        Hoş geldin - {user.email}
+        Hoş geldin
         <span className="text-[14px] font-normal text-zinc-400">
           Employee Database v1.2
         </span>
