@@ -2,24 +2,28 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
+import { toast, Toaster } from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const loginHandle = async (e) => {
+  const loginHandle =  (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate("/");
+      toast.success("Giriş Başarılı, Yönlendiriliyorsunuz...");
+      setTimeout(async () => {
+        await signInWithEmailAndPassword(auth, email, password);
+      }, 2000);
     } catch {
-      alert("Bilgileri lütfen doldurunuz...");
+      toast.error("Bilgileri lütfen doldurunuz...");
     }
   };
 
   return (
     <div className="p-7 w-full flex flex-col gap-y-12 px-12 ">
+      <Toaster />
       <h1 className="text-4xl font-bold text-zinc-800 flex justify-between items-center px-1">
         Giriş Yap!
         <span className="text-[14px] font-normal text-zinc-400">

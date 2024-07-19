@@ -14,7 +14,7 @@ const Navbar = () => {
     e.preventDefault();
     try {
       await signOut(auth);
-      alert("Çıkış başarılı");
+      toast.success("Çıkış başarılı");
     } catch {
       alert("Bir takım hata mevcut kodları kontrol edin.");
     }

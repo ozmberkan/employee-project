@@ -14,6 +14,7 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import { auth } from "./firebase";
 import Register from "./pages/Register";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   const [data, setData] = useState(Data);
