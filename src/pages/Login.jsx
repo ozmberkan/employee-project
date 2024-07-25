@@ -11,16 +11,15 @@ const Login = () => {
   const loginHandle = async (e) => {
     e.preventDefault();
     try {
-      toast.success("Giriş Başarılı");
       await signInWithEmailAndPassword(auth, email, password);
+      alert("Giriş bilgileri doğrudur.");
     } catch {
-      toast.error("Bilgileri lütfen doldurunuz...");
+      alert("Bilgileri Doldurunuz");
     }
   };
 
   return (
     <div className="p-7 w-full flex flex-col gap-y-12 px-12 ">
-      <Toaster />
       <h1 className="text-4xl font-bold text-zinc-800 flex justify-between items-center px-1">
         Giriş Yap!
         <span className="text-[14px] font-normal text-zinc-400">
