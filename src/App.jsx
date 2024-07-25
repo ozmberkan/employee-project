@@ -47,47 +47,6 @@ const App = () => {
     );
   };
 
-  // const router = createBrowserRouter([
-  //   {
-  //     path: "/",
-  //     element: <Layout />,
-  //     children: [
-  //       {
-  //         path: "/",
-  //         element: user ? (
-  //           <Home user={user} data={data} setData={setData} />
-  //         ) : (
-  //           <Navigate to="/login" />
-  //         ),
-  //       },
-  //       {
-  //         path: "/add",
-  //         element: user ? (
-  //           <Add data={data} setData={setData} />
-  //         ) : (
-  //           <Navigate to="/login" />
-  //         ),
-  //       },
-  //       {
-  //         path: "/list",
-  //         element: user ? (
-  //           <List data={data} setData={setData} />
-  //         ) : (
-  //           <Navigate to="/login" />
-  //         ),
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     path: "/login",
-  //     element: user ? <Navigate to="/" /> : <Login />,
-  //   },
-  //   {
-  //     path: "/register",
-  //     element: user ? <Navigate to="/" /> : <Register />,
-  //   },
-  // ]);
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -95,31 +54,72 @@ const App = () => {
       children: [
         {
           path: "/",
-          element: <Home data={data} setData={setData} user={user} />,
+          element: user ? (
+            <Home user={user} data={data} setData={setData} />
+          ) : (
+            <Navigate to="/login" />
+          ),
         },
         {
           path: "/add",
-          element: <Add data={data} setData={setData} />,
+          element: user ? (
+            <Add data={data} setData={setData} />
+          ) : (
+            <Navigate to="/login" />
+          ),
         },
         {
           path: "/list",
-          element: <List data={data} setData={setData} />,
-        },
-        {
-          path: "/settings",
-          element: <Settings />,
+          element: user ? (
+            <List data={data} setData={setData} />
+          ) : (
+            <Navigate to="/login" />
+          ),
         },
       ],
     },
     {
       path: "/login",
-      element: <Login />,
+      element: user ? <Navigate to="/" /> : <Login />,
     },
     {
       path: "/register",
-      element: <Register />,
+      element: user ? <Navigate to="/" /> : <Register />,
     },
   ]);
+
+  // const router = createBrowserRouter([
+  //   {
+  //     path: "/",
+  //     element: <Layout />,
+  //     children: [
+  //       {
+  //         path: "/",
+  //         element: <Home data={data} setData={setData} user={user} />,
+  //       },
+  //       {
+  //         path: "/add",
+  //         element: <Add data={data} setData={setData} />,
+  //       },
+  //       {
+  //         path: "/list",
+  //         element: <List data={data} setData={setData} />,
+  //       },
+  //       {
+  //         path: "/settings",
+  //         element: <Settings />,
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     path: "/login",
+  //     element: <Login />,
+  //   },
+  //   {
+  //     path: "/register",
+  //     element: <Register />,
+  //   },
+  // ]);
 
   return <RouterProvider router={router} />;
 };
