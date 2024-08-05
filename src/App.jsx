@@ -14,7 +14,6 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import { auth } from "./firebase";
 import Register from "./pages/Register";
-import { Toaster } from "react-hot-toast";
 import Settings from "./pages/Settings";
 
 const App = () => {
@@ -25,6 +24,12 @@ const App = () => {
     const storedData = JSON.parse(localStorage.getItem("employee")) || [];
     setData(storedData);
   }, [setData]);
+
+  const [checked, setChecked] = useState(
+    localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+  );
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -78,13 +83,21 @@ const App = () => {
         },
         {
           path: "/settings",
-          element: user ? <Settings /> : <Navigate to="/login" />,
+          element: user ? (
+            <Settings checked={checked} setChecked={setChecked} />
+          ) : (
+            <Navigate to="/login" />
+          ),
         },
       ],
     },
     {
       path: "/login",
-      element: user ? <Navigate to="/" /> : <Login />,
+      element: user ? (
+        <Navigate to="/" />
+      ) : (
+        <Login checked={checked} setChecked={setChecked} />
+      ),
     },
     {
       path: "/register",

@@ -18,7 +18,7 @@ const Register = () => {
   };
 
   return (
-    <div className="p-7 w-full flex flex-col gap-y-12 px-12 ">
+    <div className="p-7 w-full flex flex-col gap-y-12 px-12 h-screen dark:bg-black">
       <h1 className="text-4xl font-bold text-zinc-800 flex justify-between items-center px-1">
         Kayıt Ol!
         <span className="text-[14px] font-normal text-zinc-400">
@@ -26,7 +26,7 @@ const Register = () => {
         </span>
       </h1>
       <form
-        className="w-2/3 border bg-white grid grid-cols-2 gap-10 p-12 rounded"
+        className="w-2/3 border bg-white dark:bg-zinc-700 dark:text-white grid grid-cols-2 gap-10 p-12 rounded"
         onSubmit={registerHandle}
       >
         <div className="flex flex-col gap-y-2">
@@ -34,7 +34,7 @@ const Register = () => {
           <input
             type="email"
             placeholder="E-posta Giriniz..."
-            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3]"
+            className="px-4 py-3 border rounded dark:bg-transparent outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3]"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -46,7 +46,7 @@ const Register = () => {
             value={password}
             placeholder="Parola Giriniz..."
             onChange={(e) => setPassword(e.target.value)}
-            className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] "
+            className="px-4 py-3 border rounded dark:bg-transparent outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] "
           />
         </div>
 

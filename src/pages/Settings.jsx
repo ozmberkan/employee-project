@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Settings = () => {
-  const [checked, setChecked] = useState(
-    localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-  );
-
+const Settings = ({ checked, setChecked }) => {
   useEffect(() => {
     if (checked) {
       document.documentElement.classList.add("dark");
@@ -15,7 +9,7 @@ const Settings = () => {
       document.documentElement.classList.remove("dark");
       localStorage.theme = "light";
     }
-  }, [checked]);
+  }, []);
 
   const handleChecked = () => {
     setChecked(!checked);
