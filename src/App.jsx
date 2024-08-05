@@ -76,6 +76,10 @@ const App = () => {
             <Navigate to="/login" />
           ),
         },
+        {
+          path: "/settings",
+          element: user ? <Settings /> : <Navigate to="/login" />,
+        },
       ],
     },
     {
@@ -87,39 +91,6 @@ const App = () => {
       element: user ? <Navigate to="/" /> : <Register />,
     },
   ]);
-
-  // const router = createBrowserRouter([
-  //   {
-  //     path: "/",
-  //     element: <Layout />,
-  //     children: [
-  //       {
-  //         path: "/",
-  //         element: <Home data={data} setData={setData} user={user} />,
-  //       },
-  //       {
-  //         path: "/add",
-  //         element: <Add data={data} setData={setData} />,
-  //       },
-  //       {
-  //         path: "/list",
-  //         element: <List data={data} setData={setData} />,
-  //       },
-  //       {
-  //         path: "/settings",
-  //         element: <Settings />,
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     path: "/login",
-  //     element: <Login />,
-  //   },
-  //   {
-  //     path: "/register",
-  //     element: <Register />,
-  //   },
-  // ]);
 
   return <RouterProvider router={router} />;
 };
