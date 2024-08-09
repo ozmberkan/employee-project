@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 const initialState = {
   users: JSON.parse(localStorage.getItem("employee")) || [],
-
+  user: null,
   filteredUsers: [],
   newEmployee: {
     id: "",
@@ -21,10 +21,13 @@ export const userSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
+    setUser: (state, action) => {
+      state.user = action.payload;
+    },
     addNewEmployee: (state) => {
-      const isValid = Object.values(state.newEmployee).some((x) => x !== "");
+      const isValid = Object.values(state.newEmployee).every((x) => x !== "");
       if (!isValid) {
-        toast.error("Lütfen tüm alanları doldurunuz..", {
+        toast.error("Lütfen tüm alanları doldurunuz.", {
           theme: "dark",
           autoClose: 1000,
         });
@@ -58,7 +61,12 @@ export const userSlice = createSlice({
   },
 });
 
-export const { addNewEmployee, handleChange, deleteUser, filteredUser } =
-  userSlice.actions;
+export const {
+  setUser,
+  addNewEmployee,
+  handleChange,
+  deleteUser,
+  filteredUser,
+} = userSlice.actions;
 
 export default userSlice.reducer;

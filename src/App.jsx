@@ -14,28 +14,30 @@ import Login from "./pages/Login";
 import { auth } from "./firebase";
 import Register from "./pages/Register";
 import Settings from "./pages/Settings";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "./redux/slices/userSlice";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
-  const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.users.user);
   const [checked, setChecked] = useState(
     localStorage.getItem("theme") === "dark" ||
       (!("theme" in localStorage) &&
         window.matchMedia("(prefers-color-scheme: dark)").matches)
   );
-  console.log(user);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
+    const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
+      if (firebaseUser) {
+        dispatch(setUser(firebaseUser));
       } else {
-        setUser(null);
+        dispatch(setUser(null));
       }
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [dispatch]);
 
   const Layout = () => {
     return (

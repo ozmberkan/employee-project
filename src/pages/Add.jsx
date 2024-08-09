@@ -5,7 +5,7 @@ import { addNewEmployee, handleChange } from "../redux/slices/userSlice";
 
 const Add = () => {
   const dispatch = useDispatch();
-  const { newEmployee, users } = useSelector((state) => state.users);
+  const { newEmployee } = useSelector((state) => state.users);
 
   const AddFunc = (e) => {
     e.preventDefault();
