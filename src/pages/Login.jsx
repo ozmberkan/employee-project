@@ -1,34 +1,28 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
+import { toast, ToastContainer } from "react-toastify";
 
-const Login = ({ checked, setChecked }) => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const loginHandle = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      alert("Giriş bilgileri doğrudur.");
+      toast.success("Giriş Bilgileri Doğrudur Yönlendiriliyorsunuz.");
+      navigate("/");
     } catch {
-      alert("Bilgileri Doldurunuz");
+      toast.error("Lütfen Bilgileri Doğru Giriniz.");
     }
   };
 
-  useEffect(() => {
-    if (checked) {
-      document.documentElement.classList.add("dark");
-      localStorage.theme = "dark";
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.theme = "light";
-    }
-  }, []);
-
   return (
     <div className="p-7 w-full flex flex-col gap-y-12 px-12 dark:bg-black  h-screen">
+      <ToastContainer />
       <h1 className="text-4xl font-bold text-zinc-800 dark:text-white flex justify-between items-center px-1">
         Giriş Yap!
         <span className="text-[14px] font-normal text-zinc-400">

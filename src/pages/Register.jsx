@@ -18,7 +18,7 @@ const Register = () => {
   };
 
   return (
-    <div className="p-7 w-full flex flex-col gap-y-12 px-12 h-screen dark:bg-black">
+    <div className="p-7 w-full flex flex-col gap-y-12 px-12 h-screen dark:bg-black transition-all duration-500">
       <h1 className="text-4xl font-bold text-zinc-800 flex justify-between items-center px-1">
         Kayıt Ol!
         <span className="text-[14px] font-normal text-zinc-400">

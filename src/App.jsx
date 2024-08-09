@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Data } from "./data/Data";
 import FlexContainer from "./container/FlexContainer";
 import {
   RouterProvider,
@@ -15,18 +14,12 @@ import Login from "./pages/Login";
 import { auth } from "./firebase";
 import Register from "./pages/Register";
 import Settings from "./pages/Settings";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
-  const [data, setData] = useState(Data);
-  const [user, setUser] = useState("");
-
-  useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("employee")) || [];
-    setData(storedData);
-  }, [setData]);
-
+  const [user, setUser] = useState(null);
   const [checked, setChecked] = useState(
-    localStorage.theme === "dark" ||
+    localStorage.getItem("theme") === "dark" ||
       (!("theme" in localStorage) &&
         window.matchMedia("(prefers-color-scheme: dark)").matches)
   );
@@ -59,27 +52,15 @@ const App = () => {
       children: [
         {
           path: "/",
-          element: user ? (
-            <Home user={user} data={data} setData={setData} />
-          ) : (
-            <Navigate to="/login" />
-          ),
+          element: user ? <Home user={user} /> : <Navigate to="/login" />,
         },
         {
           path: "/add",
-          element: user ? (
-            <Add data={data} setData={setData} />
-          ) : (
-            <Navigate to="/login" />
-          ),
+          element: user ? <Add /> : <Navigate to="/login" />,
         },
         {
           path: "/list",
-          element: user ? (
-            <List data={data} setData={setData} />
-          ) : (
-            <Navigate to="/login" />
-          ),
+          element: user ? <List /> : <Navigate to="/login" />,
         },
         {
           path: "/settings",
@@ -93,15 +74,11 @@ const App = () => {
     },
     {
       path: "/login",
-      element: user ? (
-        <Navigate to="/" />
-      ) : (
-        <Login checked={checked} setChecked={setChecked} />
-      ),
+      element: <Login />,
     },
     {
       path: "/register",
-      element: user ? <Navigate to="/" /> : <Register />,
+      element: <Register />,
     },
   ]);
 

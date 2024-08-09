@@ -16,7 +16,7 @@ const Settings = ({ checked, setChecked }) => {
   };
 
   return (
-    <div className="p-7 flex flex-col  gap-y-12 px-12 dark:bg-[#000000] dark:text-white h-screen w-full  transition-all duration-500">
+    <div className="p-7 flex flex-col  gap-y-12 px-12 dark:bg-[#000000] dark:text-white h-screen w-full  transition-all duration-500 ">
       <h1 className="text-4xl dark:text-white font-bold text-zinc-800 flex justify-between items-center px-1">
         Ayarlar
       </h1>

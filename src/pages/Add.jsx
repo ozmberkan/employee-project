@@ -1,54 +1,24 @@
-import { nanoid } from "nanoid";
-import React, { useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import { addNewEmployee, handleChange } from "../redux/slices/userSlice";
 
-const Add = (props) => {
-  const { setData, data } = props;
-  const [newEmployee, setNewEmployee] = useState({
-    id: "",
-    name: "",
-    surname: "",
-    bdate: "",
-    itype: "",
-    job: "",
-    dlicense: "",
-  });
+const Add = () => {
+  const dispatch = useDispatch();
+  const { newEmployee, users } = useSelector((state) => state.users);
 
-  const addNewEmployee = (e) => {
+  const AddFunc = (e) => {
     e.preventDefault();
-    if (
-      newEmployee.name === "" ||
-      newEmployee.surname === "" ||
-      newEmployee.bdate === "" ||
-      newEmployee.itype === "" ||
-      newEmployee.job === "" ||
-      newEmployee.dlicense === ""
-    ) {
-      toast.error("Tüm alanları doldurmak zorundasınız...");
-    } else {
-      const updatedUser = [...data, { ...newEmployee, id: nanoid() }];
-      setData(updatedUser);
-      localStorage.setItem("employee", JSON.stringify(updatedUser));
-      setNewEmployee({
-        id: "",
-        name: "",
-        surname: "",
-        bdate: "",
-        itype: "",
-        job: "",
-        dlicense: "",
-      });
-      toast.success("Personel başarıyla veritabanına eklendi.");
-    }
+    dispatch(addNewEmployee());
   };
 
-  const handleChange = (e) => {
-    const { value, name } = e.target;
-    setNewEmployee({ ...newEmployee, [name]: value });
+  const OnChange = (e) => {
+    dispatch(handleChange({ name: e.target.name, value: e.target.value }));
   };
 
   return (
     <div className="p-7 w-full flex h-screen flex-col gap-y-12 px-12 dark:bg-[#000000]">
+      <ToastContainer />
       <h1 className="text-4xl font-bold text-zinc-800 dark:text-white flex justify-start flex-col items-start px-1 gap-y-2">
         Personel Kayıt
         <span className="text-base font-normal text-zinc-400">
@@ -58,7 +28,7 @@ const Add = (props) => {
 
       <form
         className="w-2/3 border bg-white grid grid-cols-2 gap-10 p-12 rounded dark:bg-[#1c1c1c] dark:text-white  dark:placeholder:text-zinc-700 dark:border-[#303030]"
-        onSubmit={addNewEmployee}
+        onSubmit={AddFunc}
       >
         <div className="flex flex-col gap-y-2">
           <label className="text-lg font-semibold">İsim</label>
@@ -68,7 +38,7 @@ const Add = (props) => {
             className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 focus:ring-[#a3a3a3] 
             dark:border-[#303030] dark:bg-[#272727] dark:placeholder:text-white dark:focus:border-[#303030] dark:focus:ring-black focus:ring-offset-zinc-700"
             name="name"
-            onChange={handleChange}
+            onChange={OnChange}
             value={newEmployee.name}
           />
         </div>
@@ -79,7 +49,7 @@ const Add = (props) => {
             placeholder="Soy isim Giriniz..."
             className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] dark:border-[#303030] dark:bg-[#272727] dark:placeholder:text-white  dark:focus:border-[#303030] dark:focus:ring-black focus:ring-offset-zinc-700"
             name="surname"
-            onChange={handleChange}
+            onChange={OnChange}
             value={newEmployee.surname}
           />
         </div>
@@ -91,7 +61,7 @@ const Add = (props) => {
             className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] dark:border-[#303030] dark:bg-[#272727] dark:focus:border-[#303030] dark:focus:ring-black focus:ring-offset-zinc-700 
             dark:placeholder:text-white "
             name="bdate"
-            onChange={handleChange}
+            onChange={OnChange}
             value={newEmployee.bdate}
           />
         </div>
@@ -101,7 +71,7 @@ const Add = (props) => {
             type="text"
             className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] dark:border-[#303030] dark:bg-[#272727] dark:placeholder:text-white dark:focus:border-[#303030] dark:focus:ring-black focus:ring-offset-zinc-700"
             name="itype"
-            onChange={handleChange}
+            onChange={OnChange}
             value={newEmployee.itype}
           >
             <option value="">Sigorta Türü Seçiniz...</option>
@@ -116,7 +86,7 @@ const Add = (props) => {
             type="text"
             className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] dark:border-[#303030] dark:bg-[#272727] dark:placeholder:text-white  dark:focus:border-[#303030] dark:focus:ring-black focus:ring-offset-zinc-700"
             name="job"
-            onChange={handleChange}
+            onChange={OnChange}
             value={newEmployee.job}
           >
             <option value="">Meslek Seçiniz...</option>
@@ -148,7 +118,7 @@ const Add = (props) => {
             type="text"
             className="px-4 py-3 border rounded outline-none focus:ring-1 transition-all focus:ring-offset-1 duration-500 ring-[#a3a3a3] dark:border-[#303030] dark:bg-[#272727] dark:placeholder:text-white dark:focus:border-[#303030]"
             name="dlicense"
-            onChange={handleChange}
+            onChange={OnChange}
             value={newEmployee.dlicense}
           >
             <option value="">Sürücü Belgesi Seçiniz...</option>

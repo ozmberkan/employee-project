@@ -1,18 +1,18 @@
 import React from "react";
 import { HiUsers } from "react-icons/hi2";
-import { MdWork, MdOutlineUpdate } from "react-icons/md";
-import { BiSolidTime } from "react-icons/bi";
+import { MdWork } from "react-icons/md";
+import { BiBell, BiSolidTime } from "react-icons/bi";
 import { Updates } from "../data/Data";
+import { useSelector } from "react-redux";
 
-const Home = (props) => {
-  const { data, setData, user } = props;
+const Home = () => {
+  const { users } = useSelector((store) => store.users);
+  const reversedData = [...users].reverse();
+  const totalEmployee = users.length;
 
-  const reversedData = [...data].reverse();
-  const totalEmployee = data.length;
-
-  const count4A = data.filter((type) => type.itype === "4A").length;
-  const count4B = data.filter((type) => type.itype === "4B").length;
-  const count4C = data.filter((type) => type.itype === "4C").length;
+  const count4A = users.filter((type) => type.itype === "4A").length;
+  const count4B = users.filter((type) => type.itype === "4B").length;
+  const count4C = users.filter((type) => type.itype === "4C").length;
 
   return (
     <div className="p-7 w-full flex flex-col gap-y-12 px-12 dark:bg-[#000000] h-screen ">
@@ -46,8 +46,8 @@ const Home = (props) => {
         </div>
         <div className="rounded-xl bg-white border dark:bg-[#1c1c1c] p-6 flex flex-col gap-y-2 ring-2 ring-offset-4  dark:ring-offset-0  dark:ring-offset-transparent  row-span-4 ring-orange-500/70 border-zinc-400/50">
           <h1 className="text-2xl font-semibold flex items-center gap-x-2">
-            <MdOutlineUpdate />
-            Güncellemeler
+            <BiBell />
+            Bildirimler
           </h1>
           {Updates.map((update, i) => (
             <span className="text-zinc-500" key={i}>{`• ${update.title}`}</span>
