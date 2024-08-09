@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
-import { Toaster, toast } from "react-hot-toast";
+import { toast, ToastContainer } from "react-toastify";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -12,13 +12,17 @@ const Register = () => {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
+      toast.success(
+        "Kayıt İşlemi Başarıyla Tamamlandı! Yönlendiriliyorsunuz..."
+      );
     } catch (error) {
-      toast.error("Hata Mevcut");
+      toast.error("Bir hata mevcut, sistem yöneticisi ile iletişime geçin!");
     }
   };
 
   return (
     <div className="p-7 w-full flex flex-col gap-y-12 px-12 h-screen dark:bg-black transition-all duration-500">
+      <ToastContainer />
       <h1 className="text-4xl font-bold text-zinc-800 flex justify-between items-center px-1">
         Kayıt Ol!
         <span className="text-[14px] font-normal text-zinc-400">

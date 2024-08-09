@@ -53,6 +53,7 @@ const Add = () => {
             value={newEmployee.surname}
           />
         </div>
+
         <div className="flex flex-col gap-y-2">
           <label className="text-lg font-semibold">Doğum Tarihi</label>
           <input

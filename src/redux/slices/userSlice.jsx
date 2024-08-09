@@ -26,7 +26,7 @@ export const userSlice = createSlice({
     },
     addNewEmployee: (state) => {
       const isValid = Object.values(state.newEmployee).every((x) => x !== "");
-      if (!isValid) {
+      if (isValid) {
         toast.error("Lütfen tüm alanları doldurunuz.", {
           theme: "dark",
           autoClose: 1000,
@@ -48,7 +48,7 @@ export const userSlice = createSlice({
     },
     deleteUser: (state, action) => {
       state.users = state.users.filter((user) => user.id !== action.payload);
-      localStorage.setItem("employee", JSON.stringify(state.users)); // Update localStorage after deletion
+      localStorage.setItem("employee", JSON.stringify(state.users));
     },
     filteredUser: (state, action) => {
       const filterText = action.payload.toLowerCase();

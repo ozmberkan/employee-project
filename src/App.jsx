@@ -11,33 +11,19 @@ import Add from "./pages/Add";
 import List from "./pages/List";
 import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
-import { auth } from "./firebase";
 import Register from "./pages/Register";
 import Settings from "./pages/Settings";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "./redux/slices/userSlice";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.users.user);
+  const { users } = useSelector((store) => store.users);
+
   const [checked, setChecked] = useState(
     localStorage.getItem("theme") === "dark" ||
       (!("theme" in localStorage) &&
         window.matchMedia("(prefers-color-scheme: dark)").matches)
   );
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
-      if (firebaseUser) {
-        dispatch(setUser(firebaseUser));
-      } else {
-        dispatch(setUser(null));
-      }
-    });
-
-    return () => unsubscribe();
-  }, [dispatch]);
 
   const Layout = () => {
     return (
@@ -55,23 +41,19 @@ const App = () => {
       children: [
         {
           path: "/",
-          element: user ? <Home user={user} /> : <Navigate to="/login" />,
+          element: <Home />,
         },
         {
           path: "/add",
-          element: user ? <Add /> : <Navigate to="/login" />,
+          element: <Add />,
         },
         {
           path: "/list",
-          element: user ? <List /> : <Navigate to="/login" />,
+          element: <List />,
         },
         {
           path: "/settings",
-          element: user ? (
-            <Settings checked={checked} setChecked={setChecked} />
-          ) : (
-            <Navigate to="/login" />
-          ),
+          element: <Settings checked={checked} setChecked={setChecked} />,
         },
       ],
     },
