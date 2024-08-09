@@ -23,6 +23,7 @@ const App = () => {
       (!("theme" in localStorage) &&
         window.matchMedia("(prefers-color-scheme: dark)").matches)
   );
+  console.log(user);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
