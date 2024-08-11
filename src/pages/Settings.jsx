@@ -2,15 +2,7 @@ import React, { useEffect, useState } from "react";
 import { defaultUser } from "../data/data";
 
 const Settings = ({ theme, setTheme }) => {
-  useEffect(() => {
-    if (theme) {
-      document.documentElement.classList.add("dark");
-      localStorage.theme = "dark";
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.theme = "light";
-    }
-  }, [theme]);
+  
 
   const handleTheme = () => {
     setTheme(!theme);
