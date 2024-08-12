@@ -15,13 +15,11 @@ import Home from "./pages/Home";
 import Add from "./pages/Add";
 import List from "./pages/List";
 import Settings from "./pages/Settings";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ForgotPassword from "./pages/ForgotPassword";
 
 const App = () => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") === "dark" ||
@@ -32,7 +30,6 @@ const App = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
-      setLoading(false);
     });
     return () => unsubscribe();
   }, []);
