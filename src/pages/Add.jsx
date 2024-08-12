@@ -4,7 +4,7 @@ import { addInputField } from "../data/data";
 
 const Add = ({ theme }) => {
   return (
-    <div className="p-6 w-full h-screen flex flex-col gap-y-2 dark:bg-black">
+    <div className="p-6 w-full h-screen flex flex-col gap-y-4 dark:bg-black">
       <div className="flex justify-between items-center ">
         <div className="flex flex-col justify-start gap-y-1 ">
           <h1 className="text-2xl font-bold dark:text-[#f1f1f1]">
@@ -28,7 +28,7 @@ const Add = ({ theme }) => {
           />
         )}
       </div>
-      <form className="bg-white rounded p-6 w-1/2 border grid grid-cols-2 gap-5 dark:bg-[#141414] dark:border-zinc-600/25">
+      <form className="bg-white rounded p-6 w-1/2  border grid grid-cols-2 gap-5 dark:bg-[#141414] dark:border-zinc-600/25">
         {addInputField.map((input) => (
           <div className="flex flex-col gap-y-1" key={input.name}>
             <label className="dark:text-[#f1f1f1]">{input.label}</label>
@@ -38,12 +38,12 @@ const Add = ({ theme }) => {
               <input
                 type={input.type}
                 placeholder={input.placeholder}
-                className="border px-4 py-2 rounded dark:bg-zinc-800/15 dark:border-zinc-600/25 dark:text-[#f1f1f1]"
+                className="border px-4 py-3 rounded dark:bg-zinc-800/15 dark:border-zinc-600/25 dark:text-zinc-600 placeholder:text-zinc-600"
                 name={input.name}
               />
             ) : input.type === "select" ? (
               <select
-                className="border px-4 py-2 rounded dark:bg-zinc-800/15 dark:border-zinc-600/25 dark:text-[#f1f1f1]"
+                className="border px-4 py-3 rounded dark:bg-zinc-800/15 dark:border-zinc-600/25 dark:text-zinc-600"
                 name={input.name}
               >
                 {input.options.map((option) => (
@@ -55,7 +55,7 @@ const Add = ({ theme }) => {
             ) : null}
           </div>
         ))}
-        <button className="border col-start-1 col-end-3 px-4 py-2 rounded mt-5 border-black dark:bg-zinc-800/15 dark:text-[#f1f1f1] dark:border-zinc-600/25">
+        <button className="border col-start-1 col-end-3 px-4 py-3 rounded mt-5 border-black dark:bg-zinc-300/15 dark:text-[#f1f1f1] dark:border-zinc-600/25">
           Kaydı Tamamla
         </button>
       </form>

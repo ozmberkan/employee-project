@@ -2,19 +2,19 @@ import Logo from "../images/ae.png";
 import darkLogo from "../images/aeDark.png";
 import { HiBell, HiUsers } from "react-icons/hi";
 import { MdWork } from "react-icons/md";
-import { BiSolidTime, BiUser } from "react-icons/bi";
-import { tableTitle, iTypeTitle, defaultUser } from "../data/data";
+import { BiSolidTime } from "react-icons/bi";
+import { tableTitle, iTypeTitle} from "../data/data";
 
-const Home = ({ theme }) => {
+const Home = ({ theme, user }) => {
   return (
-    <div className="p-6 w-full h-screen flex flex-col gap-y-5 dark:bg-black ">
-      <div className="flex justify-between items-center ">
-        <div className="flex flex-col justify-start gap-y-1 ">
+    <div className="p-6 w-full h-screen flex flex-col gap-y-5 dark:bg-black  transition-all durat">
+      <div className="flex justify-between items-center  py-3 ">
+        <div className="flex justify-center items-center gap-x-5 gap-y-1 ">
           <h1 className="text-2xl font-bold dark:text-[#f1f1f1]">
             Hoş geldin!
           </h1>
-          <span className="text-sm flex items-center gap-x-1 dark:text-[#f1f1f1]">
-            <BiUser /> {defaultUser.fullName}
+          <span className="font-normal px-4 py-1 bg-white border rounded-full text-md">
+            {user.displayName}
           </span>
         </div>
         {theme ? (

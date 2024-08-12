@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { defaultUser } from "../data/data";
 
 const Settings = ({ theme, setTheme }) => {
-  
-
   const handleTheme = () => {
     setTheme(!theme);
   };

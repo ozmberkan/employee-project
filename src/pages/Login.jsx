@@ -1,17 +1,49 @@
+import { useState } from "react";
 import { MdMail } from "react-icons/md";
 import { IoIosLock } from "react-icons/io";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
+import { auth } from "~/firebase";
 import Logo from "../images/ae.png";
 import darkLogo from "../images/aeDark.png";
+import { toast, ToastContainer } from "react-toastify";
 
 const Login = ({ theme }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const provider = new GoogleAuthProvider();
+
+  const signIn = async (e) => {
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      navigate("/");
+      toast.success("Giriş Yapıldı. Yönlendiriliyorsunuz.");
+    } catch (error) {
+      toast.error("Girilen Bilgiler Yanlış Lütfen Kontrol Ediniz.");
+    }
+  };
+
+  const logInWithGoogle = async () => {
+    try {
+      const response = await signInWithPopup(auth, provider);
+    } catch (error) {}
+  };
+
   return (
     <div
       className={`w-full h-screen flex justify-start items-center bg-[#f9f9f9] flex-col dark:bg-black ${
         theme ? "bg-black " : "bg-[#f9f9f9]"
       }`}
     >
+      <ToastContainer />
       <div className="mt-24 mb-5 ">
         {theme ? (
           <img
@@ -40,13 +72,13 @@ const Login = ({ theme }) => {
           <h1 className="text-2xl">Giriş Yap</h1>
           <p
             className={`text-sm  ${
-              theme ? "text-zinc-600" : text - zinc - 800 / 50
+              theme ? "text-zinc-600" : "text-zinc-800/50"
             }`}
           >
             Lütfen bilgiler ile sisteme giriş yap!
           </p>
         </div>
-        <form className="flex flex-col gap-y-5">
+        <form className="flex flex-col gap-y-5" onSubmit={signIn}>
           <div
             className={`w-full h-full flex items-center  px-4 rounded  border ${
               theme ? "bg-[#141414] text-[#f1f1f1]" : "bg-white"
@@ -56,6 +88,7 @@ const Login = ({ theme }) => {
               type="text"
               className="w-full py-2 bg-transparent outline-none focus:border-black transition-colors duration-500"
               placeholder="E-Mail"
+              onChange={(e) => setEmail(e.target.value)}
             />
             <span className="text-zinc-700 px-2">
               <MdMail size={25} />
@@ -67,9 +100,10 @@ const Login = ({ theme }) => {
             }`}
           >
             <input
-              type="text"
+              type="password"
               className="w-full py-2 bg-transparent outline-none focus:border-black transition-colors duration-500"
               placeholder="Parola"
+              onChange={(e) => setPassword(e.target.value)}
             />
             <span className="text-zinc-700 px-2">
               <IoIosLock size={25} />
@@ -83,13 +117,17 @@ const Login = ({ theme }) => {
             <Link to="/register" className="text-sm underline">
               Hesabın yok mu ? Kayıt ol
             </Link>
-            <button className="text-sm underline cursor-pointer">
+            <Link
+              to="/forgot-password"
+              className="text-sm underline cursor-pointer"
+            >
               Şifreni mi unuttun?
-            </button>
+            </Link>
           </div>
           <div className="w-full flex justify-center items-center ">
             <button
-              className={`w-full px-4 py-2 border rounded  hover:border-black/60 transition-all duration-500 ${
+              type="submit"
+              className={`w-full px-4 py-2 border rounded hover:bg-black hover:text-[#f1f1f1] transition-all duration-150  hover:border-black/60 ${
                 theme
                   ? "border-[#f1f1f1] text-[#f1f1f1] hover:border-zinc-500"
                   : "border-black text-black"
@@ -100,9 +138,11 @@ const Login = ({ theme }) => {
           </div>
           <div className="w-full flex justify-center items-center">
             <button
-              className={`w-full px-4 py-2 border rounded border-black hover:border-black/60 flex justify-center items-center gap-x-2 ${
+              onClick={logInWithGoogle}
+              type="button"
+              className={`w-full px-4 py-2 border rounded hover:bg-black hover:text-[#f1f1f1] transition-all duration-150 border-black hover:border-black/60 flex justify-center items-center gap-x-2 ${
                 theme
-                  ? "border-[#f1f1f1] text-[#f1f1f1] hover:border-zinc-500"
+                  ? "border-[#f1f1f3] text-[#f1f1f1] hover:border-zinc-500"
                   : "border-black text-black"
               }`}
             >

@@ -1,35 +1,31 @@
+import { useState } from "react";
 import { MdMail } from "react-icons/md";
-import { IoIosLock } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { auth } from "~/firebase";
+import { sendPasswordResetEmail } from "firebase/auth";
 import Logo from "../images/ae.png";
 import darkLogo from "../images/aeDark.png";
-import { useState } from "react";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "~/firebase";
-import { FaUser } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 
-const Register = ({ theme }) => {
+const ForgotPassword = ({ theme }) => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
 
-  const registerUser = async (e) => {
+  const handleReset = (e) => {
     e.preventDefault();
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      toast.success("Başarıyla kayıt oluşturuldu!");
-      const user = userCredential.user;
-      await updateProfile(user, {
-        displayName: name,
+
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        toast.success(
+          "Başarıyla şifre sıfırlama bağlantısı gönderildi, kısa bir süre içerisinde size ulaşacak!"
+        );
+      })
+      .catch((error) => {
+        toast.error(
+          "Bir hata ile karşılaştık, lütfen bizimle iletişime geçiniz!"
+        );
       });
-    } catch (error) {
-      toast.error("Girilen Bilgiler Yanlış Lütfen Kontrol Ediniz.");
-    }
+
+    setEmail("");
   };
 
   return (
@@ -39,7 +35,6 @@ const Register = ({ theme }) => {
       }`}
     >
       <ToastContainer />
-
       <div className="mt-24 mb-5 ">
         {theme ? (
           <img
@@ -65,38 +60,25 @@ const Register = ({ theme }) => {
             theme ? "text-[#f1f1f1]" : "text-black"
           }`}
         >
-          <h1 className="text-2xl">Kayıt Ol</h1>
+          <h1 className="text-2xl">Şifremi Unuttum</h1>
           <p
             className={`text-sm  ${
               theme ? "text-zinc-600" : "text-zinc-800/50"
             }`}
           >
-            Lütfen bilgilerin ile sisteme kayıt ol!
+            Lütfen email girerek yeni şifreni belirle. Sana yeni bir bağlantı
+            göndereceğiz.
           </p>
         </div>
-        <form className="flex flex-col gap-y-5" onSubmit={registerUser}>
+        <form className="flex flex-col gap-y-5" onSubmit={handleReset}>
           <div
             className={`w-full h-full flex items-center  px-4 rounded  border ${
               theme ? "bg-[#141414] text-[#f1f1f1]" : "bg-white"
             }`}
           >
             <input
-              type="text"
-              className="w-full py-2 bg-transparent outline-none focus:border-black transition-colors duration-500"
-              placeholder="İsim Soyisim"
-              onChange={(e) => setName(e.target.value)}
-            />
-            <span className="text-zinc-700 px-2">
-              <FaUser size={25} />
-            </span>
-          </div>
-          <div
-            className={`w-full h-full flex items-center  px-4 rounded  border ${
-              theme ? "bg-[#141414] text-[#f1f1f1]" : "bg-white"
-            }`}
-          >
-            <input
-              type="text"
+              type="email"
+              value={email}
               className="w-full py-2 bg-transparent outline-none focus:border-black transition-colors duration-500"
               placeholder="E-Mail"
               onChange={(e) => setEmail(e.target.value)}
@@ -106,38 +88,24 @@ const Register = ({ theme }) => {
             </span>
           </div>
           <div
-            className={`w-full h-full flex items-center  px-4 rounded  border ${
-              theme ? "bg-[#141414] text-[#f1f1f1]" : "bg-white"
-            }`}
-          >
-            <input
-              type="password"
-              className="w-full py-2 bg-transparent outline-none focus:border-black transition-colors duration-500"
-              placeholder="Parola"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <span className="text-zinc-700 px-2">
-              <IoIosLock size={25} />
-            </span>
-          </div>
-          <div
-            className={`w-full h-5 flex justify-between items-center ${
+            className={`w-full h-1 flex justify-end items-center ${
               theme ? "text-[#666666]" : "text-black"
             }`}
           >
             <Link to="/login" className="text-sm underline">
-              Hesabın var mı ? giriş yap
+              Giriş Sayfasına Geri Dön
             </Link>
           </div>
           <div className="w-full flex justify-center items-center ">
             <button
+              type="submit"
               className={`w-full px-4 py-2 border rounded  hover:border-black/60 transition-all duration-500 ${
                 theme
                   ? "border-[#f1f1f1] text-[#f1f1f1] hover:border-zinc-500"
                   : "border-black text-black"
               }`}
             >
-              Kayıt Ol
+              Yeni Şifreni Belirle
             </button>
           </div>
         </form>
@@ -146,4 +114,4 @@ const Register = ({ theme }) => {
   );
 };
 
-export default Register;
+export default ForgotPassword;

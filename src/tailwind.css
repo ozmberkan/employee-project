@@ -6,6 +6,8 @@
 body {
     background-color: #f9f9f9;
     font-family: 'Rubik',"sans-serif";
+
+
 }
 input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(50%);

@@ -3,6 +3,8 @@ import { AiFillHome } from "react-icons/ai";
 import { IoMdPersonAdd } from "react-icons/io";
 import { FaListUl } from "react-icons/fa";
 import { PiSignOutBold } from "react-icons/pi";
+import { signOut } from "firebase/auth";
+import { auth } from "~/firebase";
 
 
 export const defaultUser = {
@@ -19,7 +21,17 @@ export const icons = [
   { Icon: FaListUl,
     link : "/list"
    },
-  { Icon: PiSignOutBold },
+   { 
+    Icon: PiSignOutBold,
+    onClick: async () => {
+      try {
+        await signOut(auth);
+        console.log("User signed out");
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+  }
 ]
 
 export const iTypeTitle = [
