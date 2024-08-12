@@ -34,7 +34,10 @@ const Login = ({ theme }) => {
   const logInWithGoogle = async () => {
     try {
       const response = await signInWithPopup(auth, provider);
-    } catch (error) {}
+      toast.done("Google login response: ", response);
+    } catch (error) {
+      toast.error("Google ile giriş yapılırken bir hata oluştu.");
+    }
   };
 
   return (
