@@ -30,11 +30,10 @@ const Login = ({ theme }) => {
       toast.error("Girilen Bilgiler Yanlış Lütfen Kontrol Ediniz.");
     }
   };
-
+  // GOOGLE
   const logInWithGoogle = async () => {
     try {
-      const response = await signInWithPopup(auth, provider);
-      toast.done("Google login response: ", response);
+      await signInWithPopup(auth, provider);
     } catch (error) {
       toast.error("Google ile giriş yapılırken bir hata oluştu.");
     }
