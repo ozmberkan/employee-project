@@ -18,6 +18,7 @@ import List from "./pages/List";
 import Settings from "./pages/Settings";
 import ForgotPassword from "./pages/ForgotPassword";
 import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   const { theme } = useSelector((store) => store.theme);
@@ -43,6 +44,7 @@ const App = () => {
   const Layout = () => {
     return (
       <Container>
+        <ToastContainer />
         <Navbar />
         <Outlet />
       </Container>

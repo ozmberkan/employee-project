@@ -3,9 +3,11 @@ import darkLogo from "../images/aeDark.png";
 import { addInputField } from "../data/data";
 import { useDispatch, useSelector } from "react-redux";
 import { handleChange, addEmployee } from "~/redux/slices/addSlice";
+import { toast } from "react-toastify";
 
 const Add = () => {
   const { theme } = useSelector((store) => store.theme);
+  const { newEmp } = useSelector((store) => store.list);
   const dispatch = useDispatch();
 
   const onChange = (e) => {
@@ -16,6 +18,12 @@ const Add = () => {
   const addEmp = (e) => {
     e.preventDefault();
     dispatch(addEmployee());
+
+    if (Object.values(newEmp).every((x) => x === "")) {
+      toast.error("Bütün alanları doldurmak zorundasınız!");
+    } else {
+      toast.success("Başarıyla personel veritabanına eklendi!");
+    }
   };
 
   return (
@@ -59,12 +67,14 @@ const Add = () => {
                 className="border px-4 py-3 rounded dark:bg-zinc-800/15 dark:border-zinc-600/25 dark:text-zinc-600 placeholder:text-zinc-600"
                 name={input.name}
                 onChange={onChange}
+                value={newEmp[input.name]}
               />
             ) : input.type === "select" ? (
               <select
                 className="border px-4 py-3 rounded dark:bg-zinc-800/15 dark:border-zinc-600/25 dark:text-zinc-600"
                 name={input.name}
                 onChange={onChange}
+                value={newEmp[input.name]}
               >
                 {input.options.map((option) => (
                   <option key={option.value} value={option.value}>
