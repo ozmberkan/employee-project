@@ -22,16 +22,10 @@ Projeyi klonlayın
   git clone https://github.com/ozmberkan/employee-project
 ```
 
-Proje dizinine gidin
-
-```bash
-  cd **project-name**
-```
-
 Gerekli paketleri yükleyin
 
 ```bash
-  npm install ya da npm i
+  npm install
 ```
 
 Sunucuyu çalıştırın
