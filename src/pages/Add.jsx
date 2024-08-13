@@ -18,8 +18,7 @@ const Add = () => {
   const addEmp = (e) => {
     e.preventDefault();
     dispatch(addEmployee());
-
-    if (Object.values(newEmp).every((x) => x === "")) {
+    if (Object.values(newEmp).some((x) => x === "")) {
       toast.error("Bütün alanları doldurmak zorundasınız!");
     } else {
       toast.success("Başarıyla personel veritabanına eklendi!");
@@ -68,6 +67,7 @@ const Add = () => {
                 name={input.name}
                 onChange={onChange}
                 value={newEmp[input.name]}
+                maxLength={input.maxLength}
               />
             ) : input.type === "select" ? (
               <select

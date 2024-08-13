@@ -10,7 +10,7 @@ const Home = ({ user }) => {
   const { theme } = useSelector((store) => store.theme);
   const { list } = useSelector((store) => store.list);
 
-  // const lastFiveEmp = list.slice(0, 5).reserve();
+  const reversedData = [...list].reverse();
 
   const A4 = list.filter((item) => item.iType === "4A").length;
   const B4 = list.filter((item) => item.iType === "4B").length;
@@ -98,20 +98,53 @@ const Home = ({ user }) => {
             {tableTitle.map((tableItem, i) => (
               <span
                 key={i}
-                className="w-full  flex justify-start items-center font-bold "
+                className="w-full  flex justify-center items-center font-bold "
               >
                 {tableItem.title}
               </span>
             ))}
           </div>
-          <div>Yakında...</div>
+          {reversedData.length > 0 ? (
+            reversedData.map((user) => (
+              <div
+                key={user.tcNo}
+                className="w-full border-b grid grid-cols-7 py-2 dark:text-[#f1f1f1]  dark:hover:bg-[#131212] hover:bg-zinc-100 px-5 mt-3"
+              >
+                <span className="w-full  flex justify-center items-center">
+                  {user.tcNo}
+                </span>
+                <span className="w-full  flex justify-center items-center">
+                  {user.name}
+                </span>
+                <span className="w-full  flex justify-center items-center">
+                  {user.surname}
+                </span>
+                <span className="w-full  flex justify-center items-center">
+                  {user.date}
+                </span>
+                <span className="w-full  flex justify-center items-center">
+                  {user.iType}
+                </span>
+                <span className="w-full  flex justify-center items-center">
+                  {user.job}
+                </span>
+                <span className="w-full  flex justify-center items-center">
+                  {user.dlicense ? "Evet" : "Hayır"}
+                </span>
+              </div>
+            ))
+          ) : (
+            <div className="text-lg mt-2  p-4 text-zinc-500">
+              Verilerimizde herhangi bir personel bulunmamaktadır.
+            </div>
+          )}
         </div>
         <div className="w-full col-span-2 row-span-2 col-start-5 row-start-2 row-end-3 max-h-full bg-white dark:bg-[#141414]  dark:ring-1 bg-cover rounded-xl border  ring-2 ring-offset-4 gap-y-3 ring-black/30  dark:ring-offset-0 dark:ring-offset-transparent  p-6 flex flex-col">
           <h1 className="text-2xl font-base flex gap-x-2 items-center dark:text-[#f1f1f1]">
             <BiSolidTime />
             Toplantılarınız
           </h1>
-          <span className="text-zinc-500 text-xl dark:text-[#f1f1f1]">
+          <span className="text-zinc-500 text-xl dark:text-zinc-400">
             Toplantınız bulunmamaktadır.
           </span>
         </div>

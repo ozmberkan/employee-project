@@ -44,38 +44,43 @@ const List = () => {
         <table className="w-full flex flex-col gap-y-2">
           <thead className="w-full border-b grid grid-cols-9 bg-[#f9f9f9]">
             {listTitle.map((listItem, i) => (
-              <div
-                key={i}
-                className="w-full font-normal flex justify-center items-center bg-zinc-100 dark:bg-[#111111] dark:text-[#f1f1f1] py-3"
-              >
-                {listItem.title}
-              </div>
+              <tr key={i}>
+                <th className="w-full font-normal flex justify-center items-center bg-zinc-100 dark:bg-[#111111] dark:text-[#f1f1f1] py-3">
+                  {listItem.title}
+                </th>
+              </tr>
             ))}
           </thead>
           <tbody>
-            {list.map((user, i) => (
-              <tr key={i} className="grid grid-cols-9 py-2 rounded gap-x-4">
-                {Object.values(user).map((value, j) => (
-                  <td
-                    key={j}
-                    className="flex justify-center dark:text-[#f1f1f1]"
-                  >
-                    {value}
+            {list.length > 0 ? (
+              list.map((user, i) => (
+                <tr key={i} className="grid grid-cols-9 py-2 rounded gap-x-4">
+                  {Object.values(user).map((value, j) => (
+                    <td
+                      key={j}
+                      className="flex justify-center dark:text-[#f1f1f1]"
+                    >
+                      {value}
+                    </td>
+                  ))}
+                  <td className="flex gap-x-2 justify-center">
+                    <button
+                      onClick={() => deleteEmployee(user.tcNo)}
+                      className="p-2 bg-red-300 text-red-700 flex justify-center items-center rounded-md"
+                    >
+                      <BiTrash size={18} />
+                    </button>
+                    <button className="p-2 bg-blue-600 text-white flex justify-center items-center rounded-md">
+                      <BiEdit size={18} />
+                    </button>
                   </td>
-                ))}
-                <td className="flex gap-x-2 justify-center">
-                  <button
-                    onClick={() => deleteEmployee(user.tcNo)}
-                    className="p-2 bg-red-300 text-red-700 flex justify-center items-center rounded-md"
-                  >
-                    <BiTrash size={18} />
-                  </button>
-                  <button className="p-2 bg-blue-600 text-white flex justify-center items-center rounded-md">
-                    <BiEdit size={18} />
-                  </button>
-                </td>
-              </tr>
-            ))}
+                </tr>
+              ))
+            ) : (
+              <div className="text-lg mt-2  p-4 text-zinc-500">
+                Verilerimizde herhangi bir personel bulunmamaktadır.
+              </div>
+            )}
           </tbody>
         </table>
       </div>

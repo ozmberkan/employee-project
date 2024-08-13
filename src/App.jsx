@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from "./components/Navbar";
 import Container from "./containers/Container";
 import Login from "./pages/Login";
@@ -19,10 +19,12 @@ import Settings from "./pages/Settings";
 import ForgotPassword from "./pages/ForgotPassword";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { setList } from "./redux/slices/addSlice";
 
 const App = () => {
   const { theme } = useSelector((store) => store.theme);
   const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -30,6 +32,13 @@ const App = () => {
     });
     return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem("employee")) || [];
+    if (storedData.length > 0) {
+      dispatch(setList(storedData));
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     if (theme) {

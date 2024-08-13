@@ -64,7 +64,7 @@ export const listTitle = [
 ]
 
 export const addInputField = [
-  { label: "Tc. No.", type: "text", placeholder: "Tc. No.", name: "tcNo" },
+  { label: "Tc. No.", type: "text", placeholder: "Tc. No.", name: "tcNo",maxLength: 11 },
   { label: "Ad", type: "text", placeholder: "Ad", name: "name" },
   { label: "Soyad", type: "text", placeholder: "Soyad", name: "surname" },
   { label: "Doğum Tarihi", type: "date", name: "date" },
