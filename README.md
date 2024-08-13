@@ -46,6 +46,10 @@ Sunucuyu çalıştırın
 *   React-Icons
 
 
+<hr>
+
+> [!WARNING]  
+> Henüz responsive tasarıma sahip değildir!
   
 ## Canlı Demo 🚀
 
