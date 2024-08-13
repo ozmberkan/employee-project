@@ -3,6 +3,7 @@ import { AiFillHome } from "react-icons/ai";
 import { IoMdPersonAdd } from "react-icons/io";
 import { FaListUl } from "react-icons/fa";
 import { PiSignOutBold } from "react-icons/pi";
+import { FaSort } from "react-icons/fa";
 import { signOut } from "firebase/auth";
 import { auth } from "~/firebase";
 
@@ -41,23 +42,24 @@ export const iTypeTitle = [
 ]
 
 export const tableTitle = [
-  { title : "Tc. No."},
-  { title : "Ad"},
-  { title : "Soyad"},
-  { title : "Doğum Tarihi"},
-  { title : "Sigorta Tipi"},
-  { title : "Meslek"},
-  { title : "Sürücü Belgesi"},
-]
-
-
-export const listTitle = [
-  { title : "Tc. No."},
+  { title : "Tc. No.",},
   { title : "Ad"},
   { title : "Soyad"},
   { title : "Doğum Tarihi"},
   { title : "Yaş"},
   { title : "Sigorta Tipi"},
+  { title : "Meslek"},
+  { title : "Sürücü Ehliyeti"},
+]
+
+
+export const listTitle = [
+  { title : "Tc. No.", },
+  { title : "Ad", Icon: FaSort, value: "name"},
+  { title : "Soyad"},
+  { title : "Doğum Tarihi", Icon: FaSort, value:"bdate"},
+  { title : "Yaş", Icon: FaSort, value:"age"},
+  { title : "Sigorta Tipi", Icon: FaSort, value:"iType"},
   { title : "Meslek"},
   { title : "Sürücü Ehliyeti"},
   { title : "İşlemler"},

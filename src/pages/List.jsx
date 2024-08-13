@@ -3,16 +3,24 @@ import darkLogo from "../images/aeDark.png";
 import { listTitle } from "../data/data";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteEmp } from "~/redux/slices/addSlice";
+import { deleteEmp, sortList } from "~/redux/slices/addSlice";
+import { toast } from "react-toastify";
 
 const List = () => {
   const { theme } = useSelector((store) => store.theme);
-  const { list } = useSelector((store) => store.list);
+  const { list, sort } = useSelector((store) => store.list);
 
   const dispatch = useDispatch();
 
   const deleteEmployee = (tcNo) => {
     dispatch(deleteEmp(tcNo));
+    toast.success("Başarıyla Kullanıcı veritabanından silindi!");
+  };
+
+  const handleSort = (value) => {
+    const orderby =
+      sort.by === value && sort.orderby === "asc" ? "desc" : "asc";
+    dispatch(sortList({ by: value, orderby }));
   };
 
   return (
@@ -45,8 +53,13 @@ const List = () => {
           <thead className="w-full border-b grid grid-cols-9 bg-[#f9f9f9]">
             {listTitle.map((listItem, i) => (
               <tr key={i}>
-                <th className="w-full font-normal flex justify-center items-center bg-zinc-100 dark:bg-[#111111] dark:text-[#f1f1f1] py-3">
-                  {listItem.title}
+                <th
+                  key={i}
+                  className="w-full font-normal flex gap-x-1 justify-center items-center bg-zinc-100 dark:bg-[#111111] dark:text-[#f1f1f1] py-3 cursor-pointer"
+                  onClick={() => listItem.value && handleSort(listItem.value)}
+                >
+                  <span>{listItem.title}</span>
+                  {listItem.Icon && <listItem.Icon size={20} />}{" "}
                 </th>
               </tr>
             ))}
@@ -70,7 +83,14 @@ const List = () => {
                     >
                       <BiTrash size={18} />
                     </button>
-                    <button className="p-2 bg-blue-600 text-white flex justify-center items-center rounded-md">
+                    <button
+                      onClick={() =>
+                        toast.warning(
+                          "Güncelleme fonksiyonu yakın zamanda eklenecektir."
+                        )
+                      }
+                      className="p-2 bg-blue-600 text-white flex justify-center items-center rounded-md"
+                    >
                       <BiEdit size={18} />
                     </button>
                   </td>

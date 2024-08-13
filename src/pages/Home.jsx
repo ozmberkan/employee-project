@@ -3,7 +3,7 @@ import darkLogo from "../images/aeDark.png";
 import { HiBell, HiUsers } from "react-icons/hi";
 import { MdWork } from "react-icons/md";
 import { BiSolidTime } from "react-icons/bi";
-import { tableTitle, iTypeTitle } from "../data/data";
+import { iTypeTitle, tableTitle } from "../data/data";
 import { useSelector } from "react-redux";
 
 const Home = ({ user }) => {
@@ -94,7 +94,7 @@ const Home = ({ user }) => {
             <BiSolidTime />
             En son eklenen 5 personel
           </h1>
-          <div className="w-full border-b grid grid-cols-7 h-12 mt-6 bg-[#f9f9f9] dark:bg-[#111111] dark:text-[#f1f1f1] px-5">
+          <div className="w-full border-b grid grid-cols-8 h-12 mt-6 bg-[#f9f9f9] dark:bg-[#111111] dark:text-[#f1f1f1] px-5">
             {tableTitle.map((tableItem, i) => (
               <span
                 key={i}
@@ -104,33 +104,21 @@ const Home = ({ user }) => {
               </span>
             ))}
           </div>
+
           {reversedData.length > 0 ? (
             reversedData.map((user) => (
               <div
                 key={user.tcNo}
-                className="w-full border-b grid grid-cols-7 py-2 dark:text-[#f1f1f1]  dark:hover:bg-[#131212] hover:bg-zinc-100 px-5 mt-3"
+                className="w-full border-b grid grid-cols-8 py-2 dark:text-[#f1f1f1]  dark:hover:bg-[#131212] hover:bg-zinc-100 px-5 mt-3"
               >
-                <span className="w-full  flex justify-center items-center">
-                  {user.tcNo}
-                </span>
-                <span className="w-full  flex justify-center items-center">
-                  {user.name}
-                </span>
-                <span className="w-full  flex justify-center items-center">
-                  {user.surname}
-                </span>
-                <span className="w-full  flex justify-center items-center">
-                  {user.date}
-                </span>
-                <span className="w-full  flex justify-center items-center">
-                  {user.iType}
-                </span>
-                <span className="w-full  flex justify-center items-center">
-                  {user.job}
-                </span>
-                <span className="w-full  flex justify-center items-center">
-                  {user.dlicense ? "Evet" : "Hayır"}
-                </span>
+                {Object.values(user).map((value, j) => (
+                  <span
+                    key={j}
+                    className="w-full  flex justify-center items-center"
+                  >
+                    {value}
+                  </span>
+                ))}
               </div>
             ))
           ) : (
