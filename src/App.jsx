@@ -71,7 +71,7 @@ const App = () => {
         },
         {
           path: "/settings",
-          element: <Settings />,
+          element: <Settings user={user} />,
         },
         {
           path: "/add",

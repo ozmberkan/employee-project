@@ -3,7 +3,7 @@ import { defaultUser } from "../data/data";
 import { useDispatch, useSelector } from "react-redux";
 import { setTheme } from "~/redux/slices/themeSlice";
 
-const Settings = () => {
+const Settings = ({ user }) => {
   const { theme } = useSelector((store) => store.theme);
   const dispatch = useDispatch();
   const handleTheme = () => {
@@ -14,7 +14,7 @@ const Settings = () => {
     <div className="p-6 w-full h-screen flex flex-col gap-y-2 dark:bg-black dark:text-[#f1f1f1] transition-all duration-500">
       <h1 className="text-2xl font-bold">Kişisel Ayarlar</h1>
       <p className="text-sm text-zinc-500">
-        {`Merhaba, ${defaultUser.fullName} kişisel ayarlarını buradan gerçekleştirebilirsin`}
+        {`Merhaba, ${user.displayName} kişisel ayarlarını buradan gerçekleştirebilirsin`}
       </p>
 
       <label className="inline-flex items-center cursor-pointer bg-white dark:bg-[#141414]  w-[300px] rounded p-4">
