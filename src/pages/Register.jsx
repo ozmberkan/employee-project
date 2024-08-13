@@ -8,8 +8,10 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "~/firebase";
 import { FaUser } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
+import { useSelector } from "react-redux";
 
-const Register = ({ theme }) => {
+const Register = () => {
+  const { theme } = useSelector((store) => store.theme);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -22,6 +24,7 @@ const Register = ({ theme }) => {
         email,
         password
       );
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       toast.success("Başarıyla kayıt oluşturuldu!");
       const user = userCredential.user;
       await updateProfile(user, {

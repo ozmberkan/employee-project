@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   createBrowserRouter,
   Navigate,
@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
+import { useSelector } from "react-redux";
 import Navbar from "./components/Navbar";
 import Container from "./containers/Container";
 import Login from "./pages/Login";
@@ -15,17 +16,12 @@ import Home from "./pages/Home";
 import Add from "./pages/Add";
 import List from "./pages/List";
 import Settings from "./pages/Settings";
-import "react-toastify/dist/ReactToastify.css";
 import ForgotPassword from "./pages/ForgotPassword";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
+  const { theme } = useSelector((store) => store.theme);
   const [user, setUser] = useState(null);
-
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-  );
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -64,29 +60,29 @@ const App = () => {
         },
         {
           path: "/settings",
-          element: <Settings theme={theme} setTheme={setTheme} />,
+          element: <Settings />,
         },
         {
           path: "/add",
-          element: <Add theme={theme} />,
+          element: <Add />,
         },
         {
           path: "/list",
-          element: <List theme={theme} />,
+          element: <List />,
         },
       ],
     },
     {
       path: "/login",
-      element: user ? <Navigate to="/" /> : <Login theme={theme} />,
+      element: user ? <Navigate to="/" /> : <Login />,
     },
     {
       path: "/register",
-      element: user ? <Navigate to="/" /> : <Register theme={theme} />,
+      element: user ? <Navigate to="/" /> : <Register />,
     },
     {
       path: "/forgot-password",
-      element: user ? <Navigate to="/" /> : <ForgotPassword theme={theme} />,
+      element: user ? <Navigate to="/" /> : <ForgotPassword />,
     },
   ]);
 

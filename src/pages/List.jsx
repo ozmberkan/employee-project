@@ -2,8 +2,12 @@ import Logo from "../images/ae.png";
 import darkLogo from "../images/aeDark.png";
 import { listTitle, exampleData } from "../data/data";
 import { BiEdit, BiTrash } from "react-icons/bi";
+import { useSelector } from "react-redux";
 
-const List = ({ theme }) => {
+const List = () => {
+  const { theme } = useSelector((store) => store.theme);
+  const { list } = useSelector((store) => store.list);
+
   return (
     <div className="p-6 w-full h-screen flex flex-col gap-y-2 dark:bg-black">
       <div className="flex justify-between items-center ">
@@ -29,9 +33,9 @@ const List = ({ theme }) => {
           />
         )}
       </div>
-      <div className="p-5 rounded-md mt-5 bg-white w-2/3 border dark:bg-[#141414] dark:border-zinc-600/25">
+      <div className="p-5 rounded-md mt-5 bg-white w-full border dark:bg-[#141414] dark:border-zinc-600/25">
         <table className="w-full flex flex-col gap-y-2">
-          <thead className="w-full border-b grid grid-cols-8  bg-[#f9f9f9] ">
+          <thead className="w-full border-b grid grid-cols-9 bg-[#f9f9f9] ">
             {listTitle.map((listItem, i) => (
               <span
                 key={i}
@@ -42,10 +46,13 @@ const List = ({ theme }) => {
             ))}
           </thead>
           <tbody>
-            {exampleData.map((user, i) => (
-              <tr key={i} className="grid grid-cols-8 py-2  rounded gap-x-4">
+            {list.map((user, i) => (
+              <tr key={i} className="grid grid-cols-9 py-2  rounded gap-x-4">
                 {Object.values(user).map((value, i) => (
-                  <td key={i} className="flex justify-center dark:text-[#f1f1f1]">
+                  <td
+                    key={i}
+                    className="flex justify-center dark:text-[#f1f1f1]"
+                  >
                     {value}
                   </td>
                 ))}

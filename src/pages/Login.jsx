@@ -12,8 +12,10 @@ import { auth } from "~/firebase";
 import Logo from "../images/ae.png";
 import darkLogo from "../images/aeDark.png";
 import { toast, ToastContainer } from "react-toastify";
+import { useSelector } from "react-redux";
 
-const Login = ({ theme }) => {
+const Login = () => {
+  const { theme } = useSelector((store) => store.theme);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -30,7 +32,6 @@ const Login = ({ theme }) => {
       toast.error("Girilen Bilgiler Yanlış Lütfen Kontrol Ediniz.");
     }
   };
-  // GOOGLE
   const logInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, provider);

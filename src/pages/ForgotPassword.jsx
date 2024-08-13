@@ -6,8 +6,10 @@ import { sendPasswordResetEmail } from "firebase/auth";
 import Logo from "../images/ae.png";
 import darkLogo from "../images/aeDark.png";
 import { toast, ToastContainer } from "react-toastify";
+import { useSelector } from "react-redux";
 
-const ForgotPassword = ({ theme }) => {
+const ForgotPassword = () => {
+  const { theme } = useSelector((store) => store.theme);
   const [email, setEmail] = useState("");
 
   const handleReset = (e) => {

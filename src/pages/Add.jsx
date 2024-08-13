@@ -1,8 +1,23 @@
 import Logo from "../images/ae.png";
 import darkLogo from "../images/aeDark.png";
 import { addInputField } from "../data/data";
+import { useDispatch, useSelector } from "react-redux";
+import { handleChange, addEmployee } from "~/redux/slices/addSlice";
 
-const Add = ({ theme }) => {
+const Add = () => {
+  const { theme } = useSelector((store) => store.theme);
+  const dispatch = useDispatch();
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    dispatch(handleChange({ name, value }));
+  };
+
+  const addEmp = (e) => {
+    e.preventDefault();
+    dispatch(addEmployee());
+  };
+
   return (
     <div className="p-6 w-full h-screen flex flex-col gap-y-4 dark:bg-black">
       <div className="flex justify-between items-center ">
@@ -28,7 +43,10 @@ const Add = ({ theme }) => {
           />
         )}
       </div>
-      <form className="bg-white rounded p-6 w-1/2  border grid grid-cols-2 gap-5 dark:bg-[#141414] dark:border-zinc-600/25">
+      <form
+        className="bg-white rounded p-6 w-1/2  border grid grid-cols-2 gap-5 dark:bg-[#141414] dark:border-zinc-600/25"
+        onSubmit={addEmp}
+      >
         {addInputField.map((input) => (
           <div className="flex flex-col gap-y-1" key={input.name}>
             <label className="dark:text-[#f1f1f1]">{input.label}</label>
@@ -40,11 +58,13 @@ const Add = ({ theme }) => {
                 placeholder={input.placeholder}
                 className="border px-4 py-3 rounded dark:bg-zinc-800/15 dark:border-zinc-600/25 dark:text-zinc-600 placeholder:text-zinc-600"
                 name={input.name}
+                onChange={onChange}
               />
             ) : input.type === "select" ? (
               <select
                 className="border px-4 py-3 rounded dark:bg-zinc-800/15 dark:border-zinc-600/25 dark:text-zinc-600"
                 name={input.name}
+                onChange={onChange}
               >
                 {input.options.map((option) => (
                   <option key={option.value} value={option.value}>

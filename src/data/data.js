@@ -56,18 +56,19 @@ export const listTitle = [
   { title : "Ad"},
   { title : "Soyad"},
   { title : "Doğum Tarihi"},
+  { title : "Yaş"},
   { title : "Sigorta Tipi"},
   { title : "Meslek"},
-  { title : "Sürücü Belgesi"},
+  { title : "Sürücü Ehliyeti"},
   { title : "İşlemler"},
 ]
 
 export const addInputField = [
+  { label: "Tc. No.", type: "text", placeholder: "Tc. No.", name: "tcNo" },
   { label: "Ad", type: "text", placeholder: "Ad", name: "name" },
   { label: "Soyad", type: "text", placeholder: "Soyad", name: "surname" },
-  { label: "Yaş", type: "number", placeholder: "Yaş", name: "age" },
   { label: "Doğum Tarihi", type: "date", name: "date" },
-  { label: "Tc. No.", type: "text", placeholder: "Tc. No.", name: "tcNo" },
+  { label: "Yaş", type: "number", placeholder: "Yaş", name: "age" },
   {
     label: "Sigorta Tipi",
     type: "select",
@@ -85,16 +86,16 @@ export const addInputField = [
     name: "job",
     options: [
       { value: '', label: 'Seçiniz' },
-      { value: 'yazilim-gelistirici', label: 'Yazılım Geliştirici' },
-      { value: 'tasarimci', label: 'Tasarımcı' },
-      { value: 'ogretmen', label: 'Öğretmen' },
-      { value: 'doktor', label: 'Doktor' },
-      { value: 'avukat', label: 'Avukat' },
-      { value: 'muhendis', label: 'Mühendis' },
-      { value: 'hemsire', label: 'Hemşire' },
-      { value: 'muhasebeci', label: 'Muhasebeci' },
-      { value: 'sanatci', label: 'Sanatçı' },
-      { value: 'tamirci', label: 'Tamirci' },
+      { value: 'Yazılım Geliştirici', label: 'Yazılım Geliştirici' },
+      { value: 'Tasarımcı', label: 'Tasarımcı' },
+      { value: 'Öğretmen', label: 'Öğretmen' },
+      { value: 'Doktor', label: 'Doktor' },
+      { value: 'Avukat', label: 'Avukat' },
+      { value: 'Mühendis', label: 'Mühendis' },
+      { value: 'Hemşire', label: 'Hemşire' },
+      { value: 'Muhasebeci', label: 'Muhasebeci' },
+      { value: 'Sanatçı', label: 'Sanatçı' },
+      { value: 'Tamirci', label: 'Tamirci' },
     ] 
   },
   {
@@ -103,8 +104,8 @@ export const addInputField = [
     name: "dlicense",
     options: [
       {value : "", label : "Seçiniz"},
-      {value : "yes", label : "Var"},
-      {value : "no", label : "Yok"},
+      {value : "Var", label : "Var"},
+      {value : "Yok", label : "Yok"},
     ] 
   }
 ];

@@ -1,9 +1,13 @@
 import React from "react";
 import { defaultUser } from "../data/data";
+import { useDispatch, useSelector } from "react-redux";
+import { setTheme } from "~/redux/slices/themeSlice";
 
-const Settings = ({ theme, setTheme }) => {
+const Settings = () => {
+  const { theme } = useSelector((store) => store.theme);
+  const dispatch = useDispatch();
   const handleTheme = () => {
-    setTheme(!theme);
+    dispatch(setTheme(!theme));
   };
 
   return (
